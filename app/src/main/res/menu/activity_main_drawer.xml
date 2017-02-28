@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_black_dim_24dp"
+        android:title="Trang chủ"/>
+    <item
+        android:id="@+id/nav_tax"
+        android:icon="@drawable/ic_local_atm_black_dim_24dp"
+        android:title="Tính thuế"/>
+    <item
+        android:id="@+id/nav_compare"
+        android:icon="@drawable/ic_compare_arrows_black_dim_24dp"
+        android:title="So sánh cầu thủ"/>
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_favorite_black_dim_24dp"
+        android:title="Danh sách yêu thích"/>
+  </group>
+
+  <item android:title="Communicate">
+    <menu>
+      <item
+          android:id="@+id/nav_share"
+          android:icon="@drawable/ic_menu_share"
+          android:title="Share"/>
+      <item
+          android:id="@+id/nav_send"
+          android:icon="@drawable/ic_menu_send"
+          android:title="Send"/>
+    </menu>
+  </item>
+
+</menu>

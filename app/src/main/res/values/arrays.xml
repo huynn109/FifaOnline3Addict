@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="season_id">
+    <item>kl2002</item>
+    <item>2006</item>
+    <item>2007</item>
+    <item>2008</item>
+    <item>2009</item>
+    <item>2010</item>
+    <item>2011</item>
+    <item>2014</item>
+    <item>2015</item>
+    <item>2016</item>
+    <item>16ec</item>
+    <item>tots2014</item>
+    <item>eu2008</item>
+    <item>ucl2006</item>
+    <item>ucl2010</item>
+    <item>wc2006</item>
+    <item>wc2010</item>
+    <item>wc2014</item>
+    <item>15csl</item>
+    <item>16c</item>
+    <item>xi</item>
+    <item>wl</item>
+    <item>mufclegend</item>
+    <item>tl</item>
+    <item>tb11</item>
+    <item>vl</item>
+    <item>ml</item>
+    <item>cl</item>
+    <item>cel</item>
+    <item>el</item>
+    <item>u23</item>
+    <item>lp</item>
+    <item>kl</item>
+    <item>kxi</item>
+    <item>tco92</item>
+    <item>2006,2007,2008,2009,2010,2011,2014,2015,2016,16ec,tots2014,eu2008,ucl2006,ucl2010,wc2006,wc2010,wc2014,15csl,xi,wl,vl</item>
+  </string-array>
+
+  <string-array name="season_name">
+    <item>Korea Legend 2002</item>
+    <item>06</item>
+    <item>07</item>
+    <item>08</item>
+    <item>09</item>
+    <item>10</item>
+    <item>11</item>
+    <item>14</item>
+    <item>15</item>
+    <item>16</item>
+    <item>16EC</item>
+    <item>14T</item>
+    <item>08E</item>
+    <item>06U</item>
+    <item>10U</item>
+    <item>06WC</item>
+    <item>10WC</item>
+    <item>14WC</item>
+    <item>15CSL</item>
+    <item>China 2016</item>
+    <item>WORLD BEST</item>
+    <item>WORLD LEGEND</item>
+    <item>Manchester United Ambassador</item>
+    <item>Thailand Legend</item>
+    <item>Thailand Best 11</item>
+    <item>Vietnam Legend</item>
+    <item>Malaysia Legend</item>
+    <item>Chinese Legend</item>
+    <item>Euroleague Legend</item>
+    <item>Europe Legends</item>
+    <item>Korea Republic U-23</item>
+    <item>LOYAL PLAYER</item>
+    <item>Korea Legend</item>
+    <item>Korea Classic XI</item>
+    <item>The Class of 92</item>
+    <item>Vietnam Server</item>
+  </string-array>
+
+  <string-array name="country_id">
+    <item></item>
+    <item>albania</item>
+    <item>algeria</item>
+    <item>angola</item>
+    <item>antigua-and-barbuda</item>
+    <item>argentina</item>
+    <item>armenia</item>
+    <item>aruba</item>
+    <item>australia</item>
+    <item>austria</item>
+    <item>azerbaijan</item>
+    <item>bahrain</item>
+    <item>barbados</item>
+    <item>belarus</item>
+    <item>belgium</item>
+    <item>belize</item>
+    <item>benin</item>
+    <item>bermuda</item>
+    <item>bolivia</item>
+    <item>bosnia-herzegovina</item>
+    <item>brazil</item>
+    <item>bulgaria</item>
+    <item>burkina-faso</item>
+    <item>burundi</item>
+    <item>cambodia</item>
+    <item>cameroon</item>
+    <item>canada</item>
+    <item>cape-verde-islands</item>
+    <item>central-african-rep</item>
+    <item>chad</item>
+    <item>chile</item>
+    <item>china-pr</item>
+    <item>chinese-taipei</item>
+    <item>colombia</item>
+    <item>comoros</item>
+    <item>congo</item>
+    <item>costa-rica</item>
+    <item>croatia</item>
+    <item>cuba</item>
+    <item>curaçao</item>
+    <item>cyprus</item>
+    <item>czech-republic</item>
+    <item>dr-congo</item>
+    <item>denmark</item>
+    <item>dominican-republic</item>
+    <item>ecuador</item>
+    <item>egypt</item>
+    <item>el-salvador</item>
+    <item>england</item>
+    <item>equatorial guinea</item>
+    <item>estonia</item>
+    <item>ethiopia</item>
+    <item>fyr-macedonia</item>
+    <item>faroe islands</item>
+    <item>fiji</item>
+    <item>finland</item>
+    <item>france</item>
+    <item>gabon</item>
+    <item>gambia</item>
+    <item>georgia</item>
+    <item>germany</item>
+    <item>ghana</item>
+    <item>gibraltar</item>
+    <item>greece</item>
+    <item>grenada</item>
+    <item>guam</item>
+    <item>guatemala</item>
+    <item>guinea</item>
+    <item>guinea bissau</item>
+    <item>guyana</item>
+    <item>haiti</item>
+    <item>holland</item>
+    <item>honduras</item>
+    <item>hungary</item>
+    <item>iceland</item>
+    <item>india</item>
+    <item>indonesia</item>
+    <item>iran</item>
+    <item>iraq</item>
+    <item>ireland-republic</item>
+    <item>israel</item>
+    <item>italy</item>
+    <item>ivory-coast</item>
+    <item>jamaica</item>
+    <item>japan</item>
+    <item>jordan</item>
+    <item>kazakhstan</item>
+    <item>kenya</item>
+    <item>korea-dpr</item>
+    <item>korea-republic</item>
+    <item>kuwait</item>
+    <item>kyrgyzstan</item>
+    <item>latvia</item>
+    <item>lebanon</item>
+    <item>liberia</item>
+    <item>libya</item>
+    <item>liechtenstein</item>
+    <item>lithuania</item>
+    <item>luxembourg</item>
+    <item>madagascar</item>
+    <item>malaysia</item>
+    <item>mali</item>
+    <item>malta</item>
+    <item>mauritania</item>
+    <item>mauritius</item>
+    <item>mexico</item>
+    <item>moldova</item>
+    <item>montenegro</item>
+    <item>montserrat</item>
+    <item>morocco</item>
+    <item>mozambique</item>
+    <item>namibia</item>
+    <item>new-caledonia</item>
+    <item>new-zealand</item>
+    <item>nicaragua</item>
+    <item>niger</item>
+    <item>nigeria</item>
+    <item>northern-ireland</item>
+    <item>norway</item>
+    <item>oman</item>
+    <item>palestinian-authority</item>
+    <item>panama</item>
+    <item>papua-new-guinea</item>
+    <item>paraguay</item>
+    <item>peru</item>
+    <item>philippines</item>
+    <item>poland</item>
+    <item>portugal</item>
+    <item>puerto-rico</item>
+    <item>romania</item>
+    <item>russia</item>
+    <item>rwanda</item>
+    <item>saudi-arabia</item>
+    <item>scotland</item>
+    <item>senegal</item>
+    <item>serbia</item>
+    <item>sierra-leone</item>
+    <item>singapore</item>
+    <item>slovakia</item>
+    <item>slovenia</item>
+    <item>somalia</item>
+    <item>south-africa</item>
+    <item>spain</item>
+    <item>st-kitts-nevis</item>
+    <item>st-lucia</item>
+    <item>sudan</item>
+    <item>suriname</item>
+    <item>sweden</item>
+    <item>switzerland</item>
+    <item>syria</item>
+    <item>são-tomé-and-príncipe</item>
+    <item>tajikistan</item>
+    <item>tanzania</item>
+    <item>thailand</item>
+    <item>timor-leste</item>
+    <item>togo</item>
+    <item>trinidad-and-tobago</item>
+    <item>tunisia</item>
+    <item>turkey</item>
+    <item>uganda</item>
+    <item>ukraine</item>
+    <item>united-states</item>
+    <item>uruguay</item>
+    <item>uzbekistan</item>
+    <item>venezuela</item>
+    <item>vietnam</item>
+    <item>wales</item>
+    <item>zambia</item>
+    <item>zimbabwe</item>
+  </string-array>
+
+  <string-array name="country_name">
+    <item>All</item>
+    <item>Albania</item>
+    <item>Algeria</item>
+    <item>Angola</item>
+    <item>Antigua and Barbuda</item>
+    <item>Argentina</item>
+    <item>Armenia</item>
+    <item>Aruba</item>
+    <item>Australia</item>
+    <item>Austria</item>
+    <item>Azerbaijan</item>
+    <item>Bahrain</item>
+    <item>Barbados</item>
+    <item>Belarus</item>
+    <item>Belgium</item>
+    <item>Belize</item>
+    <item>Benin</item>
+    <item>Bermuda</item>
+    <item>Bolivia</item>
+    <item>Bosnia Herzegovina</item>
+    <item>Brazil</item>
+    <item>Bulgaria</item>
+    <item>Burkina Faso</item>
+    <item>Burundi</item>
+    <item>Cambodia</item>
+    <item>Cameroon</item>
+    <item>Canada</item>
+    <item>Cape Verde Islands</item>
+    <item>Central African Rep</item>
+    <item>Chad</item>
+    <item>Chile</item>
+    <item>China PR</item>
+    <item>Chinese Taipei</item>
+    <item>Colombia</item>
+    <item>Comoros</item>
+    <item>Congo</item>
+    <item>Costa Rica</item>
+    <item>Croatia</item>
+    <item>Cuba</item>
+    <item>Curaçao</item>
+    <item>Cyprus</item>
+    <item>Czech Republic</item>
+    <item>DR Congo</item>
+    <item>Denmark</item>
+    <item>Dominican Republic</item>
+    <item>Ecuador</item>
+    <item>Egypt</item>
+    <item>El Salvador</item>
+    <item>England</item>
+    <item>Equatorial Guinea</item>
+    <item>Estonia</item>
+    <item>Ethiopia</item>
+    <item>FYR Macedonia</item>
+    <item>Faroe Islands</item>
+    <item>Fiji</item>
+    <item>Finland</item>
+    <item>France</item>
+    <item>Gabon</item>
+    <item>Gambia</item>
+    <item>Georgia</item>
+    <item>Germany</item>
+    <item>Ghana</item>
+    <item>Gibraltar</item>
+    <item>Greece</item>
+    <item>Grenada</item>
+    <item>Guam</item>
+    <item>Guatemala</item>
+    <item>Guinea</item>
+    <item>Guinea Bissau</item>
+    <item>Guyana</item>
+    <item>Haiti</item>
+    <item>Holland</item>
+    <item>Honduras</item>
+    <item>Hungary</item>
+    <item>Iceland</item>
+    <item>India</item>
+    <item>Indonesia</item>
+    <item>Iran</item>
+    <item>Iraq</item>
+    <item>Ireland Republic</item>
+    <item>Israel</item>
+    <item>Italy</item>
+    <item>Ivory Coast</item>
+    <item>Jamaica</item>
+    <item>Japan</item>
+    <item>Jordan</item>
+    <item>Kazakhstan</item>
+    <item>Kenya</item>
+    <item>Korea DPR</item>
+    <item>Korea Republic</item>
+    <item>Kuwait</item>
+    <item>Kyrgyzstan</item>
+    <item>Latvia</item>
+    <item>Lebanon</item>
+    <item>Liberia</item>
+    <item>Libya</item>
+    <item>Liechtenstein</item>
+    <item>Lithuania</item>
+    <item>Luxembourg</item>
+    <item>Madagascar</item>
+    <item>Malaysia</item>
+    <item>Mali</item>
+    <item>Malta</item>
+    <item>Mauritania</item>
+    <item>Mauritius</item>
+    <item>Mexico</item>
+    <item>Moldova</item>
+    <item>Montenegro</item>
+    <item>Montserrat</item>
+    <item>Morocco</item>
+    <item>Mozambique</item>
+    <item>Namibia</item>
+    <item>New Caledonia</item>
+    <item>New Zealand</item>
+    <item>Nicaragua</item>
+    <item>Niger</item>
+    <item>Nigeria</item>
+    <item>Northern Ireland</item>
+    <item>Norway</item>
+    <item>Oman</item>
+    <item>Palestinian Authority</item>
+    <item>Panama</item>
+    <item>Papua New Guinea</item>
+    <item>Paraguay</item>
+    <item>Peru</item>
+    <item>Philippines</item>
+    <item>Poland</item>
+    <item>Portugal</item>
+    <item>Puerto Rico</item>
+    <item>Romania</item>
+    <item>Russia</item>
+    <item>Rwanda</item>
+    <item>Saudi Arabia</item>
+    <item>Scotland</item>
+    <item>Senegal</item>
+    <item>Serbia</item>
+    <item>Sierra Leone</item>
+    <item>Singapore</item>
+    <item>Slovakia</item>
+    <item>Slovenia</item>
+    <item>Somalia</item>
+    <item>South Africa</item>
+    <item>Spain</item>
+    <item>St Kitts Nevis</item>
+    <item>St Lucia</item>
+    <item>Sudan</item>
+    <item>Suriname</item>
+    <item>Sweden</item>
+    <item>Switzerland</item>
+    <item>Syria</item>
+    <item>São Tomé and Príncipe</item>
+    <item>Tajikistan</item>
+    <item>Tanzania</item>
+    <item>Thailand</item>
+    <item>Timor-Leste</item>
+    <item>Togo</item>
+    <item>Trinidad and Tobago</item>
+    <item>Tunisia</item>
+    <item>Turkey</item>
+    <item>Uganda</item>
+    <item>Ukraine</item>
+    <item>United States</item>
+    <item>Uruguay</item>
+    <item>Uzbekistan</item>
+    <item>Venezuela</item>
+    <item>Vietnam</item>
+    <item>Wales</item>
+    <item>Zambia</item>
+    <item>Zimbabwe</item>
+  </string-array>
+
+  <string-array name="position_generality">
+    <item>All</item>
+    <item>FWD</item>
+    <item>MID</item>
+    <item>DEF</item>
+    <item>GK</item>
+  </string-array>
+
+  <string-array name="position_detail_fwd">
+    <item>All</item>
+    <item>ST</item>
+    <item>CF</item>
+    <item>RF</item>
+    <item>LF</item>
+    <item>RW</item>
+    <item>LW</item>
+  </string-array>
+
+  <string-array name="position_detail_mid">
+    <item>All</item>
+    <item>CAM</item>
+    <item>LM</item>
+    <item>RM</item>
+    <item>CM</item>
+    <item>CDM</item>
+  </string-array>
+
+  <string-array name="position_detail_def">
+    <item>All</item>
+    <item>SW</item>
+    <item>CB</item>
+    <item>RB</item>
+    <item>LB</item>
+    <item>RWB</item>
+    <item>LWB</item>
+  </string-array>
+
+  <string-array name="ability_id">
+    <item></item>
+    <item>overallrating</item>
+    <item>finishing</item>
+    <item>shotpower</item>
+    <item>curve</item>
+    <item>longshots</item>
+    <item>volleys</item>
+    <item>freekickaccuracy</item>
+    <item>penalties</item>
+    <item>headingaccuracy</item>
+    <item>positioning</item>
+    <item>sprintspeed</item>
+    <item>acceleration</item>
+    <item>agility</item>
+    <item>reactions</item>
+    <item>jumping</item>
+    <item>stamina</item>
+    <item>strength</item>
+    <item>balance</item>
+    <item>shortpassing</item>
+    <item>longpassing</item>
+    <item>crossing</item>
+    <item>ballcontrol</item>
+    <item>dribbling</item>
+    <item>tacticalawareness</item>
+    <item>vision</item>
+    <item>standingtackle</item>
+    <item>slidingtackle</item>
+    <item>marking</item>
+    <item>aggression</item>
+    <item>gkdiving</item>
+    <item>gkhandling</item>
+    <item>gkkicking</item>
+    <item>gkreflexes</item>
+    <item>gkpositioning</item>
+  </string-array>
+
+  <string-array name="ability_name">
+    <item>All</item>
+    <item>Chỉ số tổng quát</item>
+    <item>Dứt điểm</item>
+    <item>Lực sút</item>
+    <item>Sút xoáy</item>
+    <item>Sút xa</item>
+    <item>Vô-lê</item>
+    <item>Đá phạt</item>
+    <item>Penalty</item>
+    <item>Đánh đầu</item>
+    <item>Chọn vị trí</item>
+    <item>Tốc độ</item>
+    <item>Tăng tốc</item>
+    <item>Khéo léo</item>
+    <item>Phản ứng</item>
+    <item>Nhảy</item>
+    <item>Thể lực</item>
+    <item>Sức mạnh</item>
+    <item>Thăng bằng</item>
+    <item>Chuyền ngắn</item>
+    <item>Chuyền dài</item>
+    <item>Tạt bóng</item>
+    <item>Giữ bóng</item>
+    <item>Rê bóng</item>
+    <item>Cắt bóng</item>
+    <item>Tầm nhìn</item>
+    <item>Tranh bóng</item>
+    <item>Xoạc bóng</item>
+    <item>Kèm người</item>
+    <item>Quyết đoán</item>
+    <item>TM đổ người</item>
+    <item>TM bắt bóng</item>
+    <item>TM phát bóng</item>
+    <item>TM phản xạ</item>
+    <item>TM chọn vị trí</item>
+  </string-array>
+
+  <string-array name="speciality_name">
+    <item>@string/speciality_name_1</item>
+    <item>@string/speciality_name_2</item>
+    <item>@string/speciality_name_3</item>
+    <item>@string/speciality_name_4</item>
+    <item>@string/speciality_name_5</item>
+    <item>@string/speciality_name_6</item>
+    <item>@string/speciality_name_7</item>
+    <item>@string/speciality_name_8</item>
+    <item>@string/speciality_name_9</item>
+    <item>@string/speciality_name_10</item>
+    <item>@string/speciality_name_11</item>
+    <item>@string/speciality_name_12</item>
+    <item>@string/speciality_name_13</item>
+    <item>@string/speciality_name_14</item>
+    <item>@string/speciality_name_15</item>
+    <item>@string/speciality_name_16</item>
+    <item>@string/speciality_name_17</item>
+  </string-array>
+  <string-array name="speciality_value">
+    <item>@string/speciality_value_1</item>
+    <item>@string/speciality_value_2</item>
+    <item>@string/speciality_value_3</item>
+    <item>@string/speciality_value_4</item>
+    <item>@string/speciality_value_5</item>
+    <item>@string/speciality_value_6</item>
+    <item>@string/speciality_value_7</item>
+    <item>@string/speciality_value_8</item>
+    <item>@string/speciality_value_9</item>
+    <item>@string/speciality_value_10</item>
+    <item>@string/speciality_value_11</item>
+    <item>@string/speciality_value_12</item>
+    <item>@string/speciality_value_13</item>
+    <item>@string/speciality_value_14</item>
+    <item>@string/speciality_value_15</item>
+    <item>@string/speciality_value_16</item>
+    <item>@string/speciality_value_17</item>
+  </string-array>
+
+  <string-array name="trait_name">
+    <item>@string/trait_name_1</item>
+    <item>@string/trait_name_2</item>
+    <item>@string/trait_name_3</item>
+    <item>@string/trait_name_4</item>
+    <item>@string/trait_name_5</item>
+    <item>@string/trait_name_6</item>
+    <item>@string/trait_name_7</item>
+    <item>@string/trait_name_8</item>
+    <item>@string/trait_name_9</item>
+    <item>@string/trait_name_10</item>
+    <item>@string/trait_name_11</item>
+    <item>@string/trait_name_12</item>
+    <item>@string/trait_name_13</item>
+    <item>@string/trait_name_14</item>
+    <item>@string/trait_name_15</item>
+    <item>@string/trait_name_16</item>
+    <item>@string/trait_name_17</item>
+    <item>@string/trait_name_18</item>
+    <item>@string/trait_name_19</item>
+    <item>@string/trait_name_20</item>
+    <item>@string/trait_name_21</item>
+    <item>@string/trait_name_22</item>
+    <item>@string/trait_name_23</item>
+    <item>@string/trait_name_24</item>
+    <item>@string/trait_name_25</item>
+    <item>@string/trait_name_26</item>
+    <item>@string/trait_name_27</item>
+    <item>@string/trait_name_28</item>
+    <item>@string/trait_name_29</item>
+    <item>@string/trait_name_30</item>
+  </string-array>
+
+  <string-array name="trait_value">
+    <item>@string/trait_value_1</item>
+    <item>@string/trait_value_2</item>
+    <item>@string/trait_value_3</item>
+    <item>@string/trait_value_4</item>
+    <item>@string/trait_value_5</item>
+    <item>@string/trait_value_6</item>
+    <item>@string/trait_value_7</item>
+    <item>@string/trait_value_8</item>
+    <item>@string/trait_value_9</item>
+    <item>@string/trait_value_10</item>
+    <item>@string/trait_value_11</item>
+    <item>@string/trait_value_12</item>
+    <item>@string/trait_value_13</item>
+    <item>@string/trait_value_14</item>
+    <item>@string/trait_value_15</item>
+    <item>@string/trait_value_16</item>
+    <item>@string/trait_value_17</item>
+    <item>@string/trait_value_18</item>
+    <item>@string/trait_value_19</item>
+    <item>@string/trait_value_20</item>
+    <item>@string/trait_value_21</item>
+    <item>@string/trait_value_22</item>
+    <item>@string/trait_value_23</item>
+    <item>@string/trait_value_24</item>
+    <item>@string/trait_value_25</item>
+    <item>@string/trait_value_26</item>
+    <item>@string/trait_value_27</item>
+    <item>@string/trait_value_28</item>
+    <item>@string/trait_value_29</item>
+    <item>@string/trait_value_30</item>
+  </string-array>
+
+</resources>

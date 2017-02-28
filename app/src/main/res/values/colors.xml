@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#FDFDFC</color>
+  <color name="colorPrimaryDark">#6D6A68</color>
+  <color name="colorAccent">#2B2A29</color>
+  <color name="red">#c0000b</color>
+  <color name="yellow">#FFCE55</color>
+  <color name="green">#008000</color>
+  <color name="yellow_legend">#E4DD83</color>
+  <color name="yellow_wb">#D6C56C</color>
+  <color name="color_green_wc">#ACC223</color>
+  <color name="color_green_lp">#163C97</color>
+  <color name="color_yellow_season">#E9CB3B</color>
+  <color name="yellow_14t">#E2D272</color>
+  <color name="blu_14t">#1F73BD</color>
+  <color name="blu_06u">#114BB5</color>
+  <color name="red_taukhua">#720009</color>
+  <color name="yellow_16w">#E5CA49</color>
+  <color name="color_green_ec">#0B6374</color>
+  <color name="red_button">#EC2024</color>
+  <color name="foot_upon">#255A94</color>
+  <color name="foot_not_upon">#323C47</color>
+  <color name="stat_60">#80807C</color>
+  <color name="stat_70">#343432</color>
+  <color name="stat_80">#598ed9</color>
+  <color name="stat_90">#3D7DD5</color>
+  <color name="stat_100">#0070C0</color>
+  <color name="stat_110">#BA8CC1</color>
+  <color name="stat_120">#6933B5</color>
+  <color name="stat_max">#FFFF02</color>
+</resources>
