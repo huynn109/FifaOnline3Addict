@@ -5,32 +5,23 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_black_dim_24dp"
-        android:title="Trang chủ"/>
+        android:title="@string/home"/>
     <item
         android:id="@+id/nav_tax"
         android:icon="@drawable/ic_local_atm_black_dim_24dp"
-        android:title="Tính thuế"/>
+        android:title="@string/tax"/>
     <item
         android:id="@+id/nav_compare"
         android:icon="@drawable/ic_compare_arrows_black_dim_24dp"
-        android:title="So sánh cầu thủ"/>
+        android:title="@string/compare"/>
     <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/ic_favorite_black_dim_24dp"
-        android:title="Danh sách yêu thích"/>
+        android:title="@string/favorite"/>
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_menu_share"
+        android:title="@string/share"/>
   </group>
-
-  <item android:title="Communicate">
-    <menu>
-      <item
-          android:id="@+id/nav_share"
-          android:icon="@drawable/ic_menu_share"
-          android:title="Share"/>
-      <item
-          android:id="@+id/nav_send"
-          android:icon="@drawable/ic_menu_send"
-          android:title="Send"/>
-    </menu>
-  </item>
 
 </menu>

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +39,8 @@ public class PaperHiddenStatFragment extends Fragment {
   @BindView(R.id.view_divider_trait) View viewDividerTrait;
   @BindView(R.id.recycler_trait) RecyclerView recyclerTrait;
   @BindView(R.id.view_divider_speciality) View viewDividerSpeciality;
+  @BindView(R.id.text_count_trait) TextView textCountTrait;
+  @BindView(R.id.text_count_speciality) TextView textCountSpeciality;
 
   private Realm realm;
   private List<Speciality> specialities = new ArrayList<>();
@@ -102,10 +103,11 @@ public class PaperHiddenStatFragment extends Fragment {
   @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
   public void onEvent(PlayerDetailActivity.MessageEvent event) {
     PlayerR player = realm.where(PlayerR.class).equalTo("id", event.getIdPlayer()).findFirst();
+    int countSpeciality = 0;
+    int countTrait = 0;
     if (player != null) {
       if (player.specialityIntegers.size() > 0) {
-        Log.d(TAG, "onEvent:  " + player.specialityIntegers.size());
-        if(specialities.size() > 0) specialities.clear();
+        if (specialities.size() > 0) specialities.clear();
         for (SpecialityInteger specialityInteger : player.specialityIntegers) {
           Speciality speciality = new Speciality();
           speciality.setName(specialityNameList.get(specialityInteger.speciality - 1));
@@ -114,22 +116,25 @@ public class PaperHiddenStatFragment extends Fragment {
           specialities.add(speciality);
         }
         specialityAdapter.notifyDataSetChanged();
+        countSpeciality = player.specialityIntegers.size();
       }
 
       if (player.traitIntegers.size() > 0) {
-        Log.d(TAG, "onEvent:  " + player.traitIntegers.size());
-        if(traits.size() > 0) traits.clear();
+        if (traits.size() > 0) traits.clear();
         for (TraitInteger traitInteger : player.traitIntegers) {
           Trait trait = new Trait();
           trait.setName(traitNameList.get(traitInteger.trait - 1));
           trait.setValue(traitValueList.get(traitInteger.trait - 1));
           trait.setPosition(traitInteger.trait - 1);
-          Log.d(TAG, "onEvent: " + trait.getName());
           traits.add(trait);
         }
-        Log.d(TAG, "onEvent: " + traits.size());
         traitAdapter.notifyDataSetChanged();
+        countTrait = player.traitIntegers.size();
       }
     }
+    String sCountTrait = String.format(getString(R.string.text_count), countTrait);
+    String sCountSpeciality = String.format(getString(R.string.text_count), countSpeciality);
+    textCountTrait.setText(sCountTrait);
+    textCountSpeciality.setText(sCountSpeciality);
   }
 }

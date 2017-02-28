@@ -472,6 +472,7 @@
       app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
   <TextView
+      android:visibility="gone"
       android:id="@+id/advertisement"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

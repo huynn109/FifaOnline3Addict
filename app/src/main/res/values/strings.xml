@@ -6,7 +6,7 @@
 
 
   <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+  <string name="hello_blank_fragment" translatable="false">Coming soon</string>
   <string name="hint_search">Search</string>
   <string name="skill_moves">Skillmoves</string>
   <string name="title_filter">Filter</string>
@@ -164,4 +164,12 @@
   <string name="trait_value_3" translatable="false">trait_value_3</string>
   <string name="trait_value_9" translatable="false">trait_value_9</string>
   <string name="trait_value_18" translatable="false">trait_value_18</string>
+  <string name="empty_state">Empty</string>
+  <string name="text_count"> (%d)</string>
+  <string name="home">Home</string>
+  <string name="tax">Tax</string>
+  <string name="compare">Compare</string>
+  <string name="favorite">Favorite</string>
+  <string name="communicate">Communicate</string>
+  <string name="share">Share</string>
 </resources>

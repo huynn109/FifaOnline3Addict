@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity
       fragmentClass = CompareFragment.class;
     } else if (id == R.id.nav_favorite) {
       fragmentClass = FavoriteFragment.class;
+    } else if(id == R.id.nav_share){
+      return false;
     }
     try {
       fragment = (Fragment) (fragmentClass != null ? fragmentClass.newInstance() : null);
