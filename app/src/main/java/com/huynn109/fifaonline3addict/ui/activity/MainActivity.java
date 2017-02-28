@@ -11,8 +11,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.huynn109.fifaonline3addict.R;
 import com.huynn109.fifaonline3addict.ui.fragment.CompareFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.FavoriteFragment;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.drawer_layout) DrawerLayout drawer;
   @BindView(R.id.appbar_main) AppBarLayout appBarLayout;
+  @BindView(R.id.frame_main) FrameLayout frameMain;
+  @BindView(R.id.adView) AdView adView;
+  @BindView(R.id.nav_view) NavigationView navView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -41,6 +47,9 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
     onNavigationItemSelected(navigationView.getMenu().getItem(0));
+
+    AdRequest adRequest = new AdRequest.Builder().build();
+    adView.loadAd(adRequest);
   }
 
   @Override public void onBackPressed() {
@@ -64,7 +73,7 @@ public class MainActivity extends AppCompatActivity
       fragmentClass = CompareFragment.class;
     } else if (id == R.id.nav_favorite) {
       fragmentClass = FavoriteFragment.class;
-    } else if(id == R.id.nav_share){
+    } else if (id == R.id.nav_share) {
       return false;
     }
     try {

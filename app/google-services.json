@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1069082826579",
+    "firebase_url": "https://fifa-online-3-data.firebaseio.com",
+    "project_id": "fifa-online-3-data",
+    "storage_bucket": "fifa-online-3-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069082826579:android:95c4acbeca1aef98",
+        "android_client_info": {
+          "package_name": "com.huynn109.fifaonline3addict"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069082826579-607o81i71scrjis65cjbefvvf88joaor.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.huynn109.fifaonline3addict",
+            "certificate_hash": "d26a784c984dd31c2357791b942770031fd20c28"
+          }
+        },
+        {
+          "client_id": "1069082826579-14u8e1n4bagr2a16r0f2jsd02jei8ao2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCwNlb56tKDQfYmOx9YOzOgxJI4taU-RA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069082826579-14u8e1n4bagr2a16r0f2jsd02jei8ao2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
