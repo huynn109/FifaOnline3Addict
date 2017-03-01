@@ -442,28 +442,6 @@
         app:tabMode="fixed"
         />
   </android.support.design.widget.AppBarLayout>
-  <!--<RelativeLayout-->
-      <!--android:id="@+id/relative_detail"-->
-      <!--android:layout_width="match_parent"-->
-      <!--android:layout_height="match_parent"-->
-      <!--android:layout_gravity="fill_vertical"-->
-      <!--android:orientation="vertical"-->
-      <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-      <!--&gt;-->
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/view_pager_stat"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_above="@+id/advertisement"-->
-        <!--/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/advertisement"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:text="Quảng cáo"-->
-        <!--/>-->
-  <!--</RelativeLayout>-->
 
   <android.support.v4.view.ViewPager
       android:id="@+id/view_pager_stat"
@@ -478,7 +456,7 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       app:adSize="BANNER"
-      app:adUnitId="@string/banner_ad_main_unit_id"
+      app:adUnitId="@string/banner_ad_unit_id_debug"
       app:layout_behavior="com.huynn109.fifaonline3addict.data.helper.FixedBottomViewBehavior"
       >
   </com.google.android.gms.ads.AdView>

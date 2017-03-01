@@ -24,9 +24,9 @@ import com.huynn109.fifaonline3addict.data.model.normal.AbilityValue;
 import com.huynn109.fifaonline3addict.data.model.normal.Club;
 import com.huynn109.fifaonline3addict.data.model.normal.Country;
 import com.huynn109.fifaonline3addict.data.model.normal.League;
-import com.huynn109.fifaonline3addict.data.model.realm.PositionR;
 import com.huynn109.fifaonline3addict.data.model.normal.Season;
 import com.huynn109.fifaonline3addict.data.model.normal.SkillMoves;
+import com.huynn109.fifaonline3addict.data.model.realm.PositionR;
 import com.huynn109.fifaonline3addict.util.URL;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -78,8 +78,9 @@ public class FilterActivity extends AppCompatActivity
   private String abilityValueChecked;
   private ArrayAdapter<SkillMoves> adapterSkillMoves;
   private String skillMovesChecked;
-  private Boolean checkBoxLiveBoostChecked;
+  private boolean checkBoxLiveBoostChecked;
   private boolean checkBoxLimitedChecked;
+  private Club clubChecked = new Club();
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -229,6 +230,12 @@ public class FilterActivity extends AppCompatActivity
         }
       }
     }
+
+    clubChecked = (Club) intent.getSerializableExtra("club");
+    if (clubChecked.getId() != null) {
+      Log.d(TAG, "parseData: " + clubChecked);
+    }
+
     countryChecked = (Country) intent.getSerializableExtra("country");
     if (countryChecked.getId() != null) {
       for (Country country : countryList) {
@@ -276,10 +283,8 @@ public class FilterActivity extends AppCompatActivity
     if (checkBoxLimitedChecked) {
       checkBoxLimited.setChecked(checkBoxLimitedChecked);
     }
-
-    Log.d(TAG, "parseData: " + checkBoxLiveBoostChecked);
-    Log.d(TAG, "parseData: " + checkBoxLimitedChecked);
   }
+
   private void setupToolbar() {
     setSupportActionBar(toolbar);
     if (getSupportActionBar() != null) {
@@ -332,11 +337,10 @@ public class FilterActivity extends AppCompatActivity
     checkBoxLiveBoostChecked = checkBoxLiveBoost.isChecked();
     checkBoxLimitedChecked = checkBoxLimited.isChecked();
 
-    Log.d(TAG, "onClickApply: " + checkBoxLimited.isChecked());
-    
     Intent intent = new Intent();
     intent.putExtra("season", (Serializable) seasonChecked);
     intent.putExtra("league", (Serializable) leagueChecked);
+    intent.putExtra("club", (Serializable) clubChecked);
     intent.putExtra("country", (Serializable) countryChecked);
     intent.putExtra("position_generality", positionGenegalityChecked);
     intent.putExtra("position_detail", positionDetailChecked);
@@ -467,7 +471,6 @@ public class FilterActivity extends AppCompatActivity
         adapterAbilityValue.notifyDataSetChanged();
         break;
       case R.id.spinner_ability_value:
-
         break;
     }
   }

@@ -2,9 +2,10 @@ package com.huynn109.fifaonline3addict.data.model.normal;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 import org.apache.commons.lang3.text.WordUtils;
 
-public class Club {
+public class Club implements Serializable{
 
   @SerializedName("name") @Expose private String name;
   @SerializedName("id") @Expose private Integer id;

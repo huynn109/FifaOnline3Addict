@@ -21,6 +21,7 @@ import com.huynn109.fifaonline3addict.ui.fragment.CompareFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.FavoriteFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.PlayerListFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.TaxFragment;
+import com.huynn109.fifaonline3addict.util.AdmobUtil;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity
   @BindView(R.id.drawer_layout) DrawerLayout drawer;
   @BindView(R.id.appbar_main) AppBarLayout appBarLayout;
   @BindView(R.id.frame_main) FrameLayout frameMain;
-  @BindView(R.id.adView) AdView adView;
   @BindView(R.id.nav_view) NavigationView navView;
+  @BindView(R.id.ad_main) AdView adMain;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -48,8 +49,10 @@ public class MainActivity extends AppCompatActivity
     navigationView.setNavigationItemSelectedListener(this);
     onNavigationItemSelected(navigationView.getMenu().getItem(0));
 
-    AdRequest adRequest = new AdRequest.Builder().build();
-    adView.loadAd(adRequest);
+    AdRequest adRequest = AdmobUtil.getAdMobRequest(this);
+    if (adRequest != null) {
+      adMain.loadAd(adRequest);
+    }
   }
 
   @Override public void onBackPressed() {
@@ -81,7 +84,6 @@ public class MainActivity extends AppCompatActivity
     } catch (Exception e) {
       e.printStackTrace();
     }
-    // Insert the fragment by replacing any existing fragment
     FragmentManager fragmentManager = getSupportFragmentManager();
     fragmentManager.beginTransaction().replace(R.id.frame_main, fragment).commit();
 

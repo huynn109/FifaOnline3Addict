@@ -5,7 +5,7 @@
   <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
   <string name="banner_ad_main_unit_id">ca-app-pub-6801264948608701/4898634673</string>
   <string name="banner_ad_player_detail_unit_id">ca-app-pub-6801264948608701/3031401071</string>
-
+  <string name="banner_ad_unit_id_debug">ca-app-pub-3940256099942544/6300978111</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment" translatable="false">Coming soon</string>
