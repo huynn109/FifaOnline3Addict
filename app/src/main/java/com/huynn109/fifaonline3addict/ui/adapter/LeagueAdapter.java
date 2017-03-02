@@ -29,8 +29,7 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.LeagueHold
 
   @Override public LeagueAdapter.LeagueHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View convertview = inflater.inflate(R.layout.single_row, parent, false);
-    LeagueHolder holder = new LeagueHolder(convertview);
-    return holder;
+    return new LeagueHolder(convertview);
   }
 
   @Override public void onBindViewHolder(LeagueAdapter.LeagueHolder holder, int position) {

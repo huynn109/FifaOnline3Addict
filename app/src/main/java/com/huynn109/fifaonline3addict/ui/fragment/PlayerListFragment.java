@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import co.moonmonkeylabs.realmrecyclerview.RealmRecyclerView;
 import com.huynn109.fifaonline3addict.R;
 import com.huynn109.fifaonline3addict.data.helper.DatabaseHelper;
 import com.huynn109.fifaonline3addict.data.model.normal.Ability;
@@ -33,6 +34,7 @@ import com.huynn109.fifaonline3addict.ui.activity.FilterActivity;
 import com.huynn109.fifaonline3addict.ui.activity.PlayerDetailActivity;
 import com.huynn109.fifaonline3addict.ui.adapter.PlayerListRealmAdapter;
 import com.huynn109.fifaonline3addict.util.URL;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -54,12 +56,12 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PlayerListFragment extends Fragment implements View.OnClickListener {
+public class PlayerListFragment extends Fragment {
 
   private static final String TAG = PlayerListFragment.class.getSimpleName();
   public static final int REQUEST_CODE_FILTER = 1;
   @BindView(R.id.progress_loading_view) ProgressBar progressLoadingView;
-  @BindView(R.id.recycler_player_fragment) RealmRecyclerView recyclerPlayerFragment;
+  @BindView(R.id.recycler_player_fragment) RecyclerView recyclerPlayerFragment;
   private List<Player> playerList = new ArrayList<>();
   private PlayerListRealmAdapter playerListAdapter;
 
@@ -95,6 +97,8 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
   private Realm realm;
   private RealmResults<PlayerR> playerRealmResults;
   private RealmQuery<PlayerR> playerRealmQuery;
+  private MaterialSearchView searchView;
+  private List<PlayerR> playerRList;
 
   public PlayerListFragment() {
   }
@@ -117,7 +121,6 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
     View rootView = inflater.inflate(R.layout.fragment_player_list, container, false);
     ButterKnife.bind(this, rootView);
     setUpRecyclerViewPlayer();
-    setUpSpinner();
     getJsoupPlayerList(URL.BASE_URL);
     return rootView;
   }
@@ -142,34 +145,19 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
         databaseHelper.saveListPlayerToRealm(playerList);
 
         RealmQuery<PlayerR> query = realm.where(PlayerR.class);
-        // ids is a list of the category ids
         if (playerList.size() > 0) {
           query = query.equalTo("id", playerList.get(0).id);
           for (int i = 1; i < playerList.size(); i++) {
             query = query.or().equalTo("id", playerList.get(i).id);
           }
+          playerRList.clear();
+          playerRealmResults = query.findAll();
+          playerRList.addAll(playerRealmResults);
+          playerListAdapter.notifyDataSetChanged();
+        } else {
+          playerRList.clear();
+          playerListAdapter.notifyDataSetChanged();
         }
-        //
-        //playerRealmQuery = realm.where(PlayerR.class);
-        //Log.d(TAG, "onNext: " + seasonChecked.size());
-        //
-        //if (seasonChecked.size() > 0) {
-        //  for (Season season : seasonChecked) {
-        //    if (seasonChecked.size() > 1) {
-        //      playerRealmQuery.equalTo("season", season.getId()).or();
-        //    } else {
-        //      playerRealmQuery.equalTo("season", season.getId());
-        //    }
-        //  }
-        //}
-        //if (leagueChecked.getId() != null) {
-        //  playerRealmQuery.equalTo("season", leagueChecked.getId());
-        //}
-        recyclerPlayerFragment.setAdapter(null);
-        playerRealmResults = query.findAll();
-        playerListAdapter =
-            new PlayerListRealmAdapter(getContext(), playerRealmResults, itemClickListener);
-        recyclerPlayerFragment.setAdapter(playerListAdapter);
       }
 
       @Override public void onError(Throwable e) {
@@ -248,20 +236,17 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
 
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.main, menu);
+    searchView = (MaterialSearchView) getActivity().findViewById(R.id.search_view);
+    MenuItem item = menu.findItem(R.id.action_search);
+    searchView.setMenuItem(item);
+    searchView.setOnQueryTextListener(searchViewQueryListener());
+    searchView.setOnSearchViewListener(searchViewListener());
     super.onCreateOptionsMenu(menu, inflater);
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_search:
-        //if (linearLayoutSearch.getVisibility() == View.GONE) {
-        //  linearLayoutSearch.setVisibility(View.VISIBLE);
-        //}
-        //new Handler().postDelayed(new Runnable() {
-        //  @Override public void run() {
-        //    nestedScrollView.fullScroll(View.FOCUS_UP);
-        //  }
-        //}, 100);
         return true;
       case R.id.action_filter:
         Intent intent = new Intent(getContext(), FilterActivity.class);
@@ -280,6 +265,31 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
         return true;
     }
     return false;
+  }
+
+  private MaterialSearchView.OnQueryTextListener searchViewQueryListener() {
+    return new MaterialSearchView.OnQueryTextListener() {
+      @Override public boolean onQueryTextSubmit(String query) {
+        getJsoupPlayerList(URL.SEARCH_URL_NAME + query.trim());
+        return false;
+      }
+
+      @Override public boolean onQueryTextChange(String newText) {
+        return false;
+      }
+    };
+  }
+
+  private MaterialSearchView.SearchViewListener searchViewListener() {
+    return new MaterialSearchView.SearchViewListener() {
+      @Override public void onSearchViewShown() {
+        //Do some magic
+      }
+
+      @Override public void onSearchViewClosed() {
+        //Do some magic
+      }
+    };
   }
 
   @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -396,147 +406,17 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
 
   private void setUpRecyclerViewPlayer() {
     playerRealmResults = realm.where(PlayerR.class).findAll();
-    playerListAdapter =
-        new PlayerListRealmAdapter(getContext(), playerRealmResults, itemClickListener);
+    playerRList = new ArrayList<>(playerRealmResults);
+    playerListAdapter = new PlayerListRealmAdapter(getContext(), playerRList, itemClickListener);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    recyclerPlayerFragment.setLayoutManager(layoutManager);
     recyclerPlayerFragment.setAdapter(playerListAdapter);
   }
 
   @Override public void onResume() {
     super.onResume();
   }
-
-  private void setUpSpinner() {
-
-    //loadStringArray();
-    //loadJsonFromFile("league.json");
-    //
-    //adapterSeason =
-    //    new ArrayAdapter<Season>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        seasonList);
-    //spinnerSeason.setAdapter(adapterSeason);
-    //spinnerSeason.setOnItemSelectedListener(this);
-    //
-    //adapterLeague =
-    //    new ArrayAdapter<League>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        leagueList);
-    //spinnerLeague.setAdapter(adapterLeague);
-    //spinnerLeague.setOnItemSelectedListener(this);
-    //
-    //adapterClub =
-    //    new ArrayAdapter<Club>(getContext(), android.R.layout.simple_dropdown_item_1line, clubList);
-    //spinnerClub.setAdapter(adapterClub);
-    //spinnerClub.setOnItemSelectedListener(this);
-    //
-    //adapterCountry =
-    //    new ArrayAdapter<Country>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        countryList);
-    //spinnerCountry.setAdapter(adapterCountry);
-    //spinnerCountry.setOnItemSelectedListener(this);
-    //
-    //adapterPositionGenerality =
-    //    new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        stringPositionGenerality);
-    //spinnerPositionGenerality.setAdapter(adapterPositionGenerality);
-    //spinnerPositionGenerality.setOnItemSelectedListener(this);
-    //
-    //adapterPositionDetail =
-    //    new ArrayAdapter<PositionR>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        positionDetailList);
-    //spinnerPositionDetail.setAdapter(adapterPositionDetail);
-    //spinnerPositionDetail.setOnItemSelectedListener(this);
-    //
-    //adapterAbility =
-    //    new ArrayAdapter<Ability>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        abilityList);
-    //spinnerAbility.setAdapter(adapterAbility);
-    //spinnerAbility.setOnItemSelectedListener(this);
-    //
-    //adapterAbilityValue =
-    //    new ArrayAdapter<AbilityValue>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        abilityValueList);
-    //spinnerAbilityValue.setAdapter(adapterAbilityValue);
-    //spinnerAbilityValue.setOnItemSelectedListener(this);
-    //
-    //adapterSkillMoves =
-    //    new ArrayAdapter<SkillMoves>(getContext(), android.R.layout.simple_dropdown_item_1line,
-    //        skillMovesList);
-    //spinnerSkillMoves.setAdapter(adapterSkillMoves);
-    //spinnerSkillMoves.setOnItemSelectedListener(this);
-  }
-
-  //private void loadStringArray() {
-  //  if (seasonList.size() > 0) seasonList.clear();
-  //  String[] stringSeasonIds = getResources().getStringArray(R.array.season_id);
-  //  String[] stringSeasonNames = getResources().getStringArray(R.array.season_name);
-  //  for (int i = 0; i < stringSeasonIds.length; i++) {
-  //    Season season = new Season();
-  //    season.setId(stringSeasonIds[i]);
-  //    season.setName(stringSeasonNames[i]);
-  //    seasonList.add(season);
-  //  }
-  //  if (countryList.size() > 0) countryList.clear();
-  //  String[] stringCountryIds = getResources().getStringArray(R.array.country_id);
-  //  String[] stringCountryNames = getResources().getStringArray(R.array.country_name);
-  //  for (int i = 0; i < stringCountryIds.length; i++) {
-  //    Country country = new Country();
-  //    country.setId(stringCountryIds[i]);
-  //    country.setName(stringCountryNames[i]);
-  //    countryList.add(country);
-  //  }
-  //  stringPositionGenerality = getResources().getStringArray(R.array.position_generality);
-  //  if (abilityList.size() > 0) abilityList.clear();
-  //  String[] stringAbilityIds = getResources().getStringArray(R.array.ability_id);
-  //  String[] stringAbilityNames = getResources().getStringArray(R.array.ability_name);
-  //  for (int i = 0; i < stringAbilityIds.length; i++) {
-  //    Ability ability = new Ability();
-  //    ability.setId(stringAbilityIds[i]);
-  //    ability.setName(stringAbilityNames[i]);
-  //    abilityList.add(ability);
-  //  }
-  //  if (abilityValueList.size() > 0) abilityValueList.clear();
-  //  for (int i = 100; i >= 40; i--) {
-  //    AbilityValue abilityValue = new AbilityValue();
-  //    if (i == 100) {
-  //      abilityValue.setName("All");
-  //    } else {
-  //      abilityValue.setId(i + "");
-  //      abilityValue.setName(">=" + i);
-  //    }
-  //    abilityValueList.add(abilityValue);
-  //  }
-  //  if (skillMovesList.size() > 0) skillMovesList.clear();
-  //  for (int i = 0; i <= 5; i++) {
-  //    SkillMoves skillMoves = new SkillMoves();
-  //    if (i == 0) {
-  //      skillMoves.setName("All");
-  //    } else {
-  //      skillMoves.setId(i + "");
-  //      skillMoves.setName(i + " " + getResources().getString(R.string.skill_moves));
-  //    }
-  //    skillMovesList.add(skillMoves);
-  //  }
-  //}
-  //
-  //private void loadJsonFromFile(String filename) {
-  //  try {
-  //    InputStream is = getActivity().getAssets().open(filename);
-  //    int size = is.available();
-  //    byte[] buffer = new byte[size];
-  //    is.read(buffer);
-  //    is.close();
-  //    String bufferString = new String(buffer);
-  //    Gson gson = new Gson();
-  //    Type listType = new TypeToken<List<League>>() {
-  //    }.getType();
-  //    League league = new League();
-  //    league.setName("All");
-  //    leagueList.add(league);
-  //    List<League> leagueListGson = gson.fromJson(bufferString, listType);
-  //    leagueList.addAll(leagueListGson);
-  //  } catch (Exception e) {
-  //    e.printStackTrace();
-  //  }
-  //}
 
   PlayerListRealmAdapter.OnItemClickListener itemClickListener = player -> {
     Intent intent = new Intent(getContext(), PlayerDetailActivity.class);
@@ -545,213 +425,4 @@ public class PlayerListFragment extends Fragment implements View.OnClickListener
     intent.putExtra("id_image", player.imageId);
     startActivity(intent);
   };
-
-  //@Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-  //  Spinner spinner = (Spinner) parent;
-  //  int itemId = spinner.getId();
-  //  switch (itemId) {
-  //    case R.id.spinner_season:
-  //      break;
-  //    case R.id.spinner_league:
-  //      if (position > 0) {
-  //        clubList.clear();
-  //        Club club = new Club();
-  //        club.setName("All");
-  //        clubList.add(0, club);
-  //        clubList.addAll(leagueList.get(position).getClubs());
-  //        spinnerClub.setSelection(0);
-  //      } else {
-  //        clubList.clear();
-  //      }
-  //      adapterClub.notifyDataSetChanged();
-  //      break;
-  //    case R.id.spinner_club:
-  //      break;
-  //    case R.id.spinner_country:
-  //      break;
-  //    case R.id.spinner_position_generality:
-  //      if (position != 0 && position != 4) {
-  //        String[] arrPositionDetail = new String[0];
-  //        positionDetailList.clear();
-  //        switch (position) {
-  //          case 1:
-  //            arrPositionDetail = getResources().getStringArray(R.array.position_detail_fwd);
-  //            break;
-  //          case 2:
-  //            arrPositionDetail = getResources().getStringArray(R.array.position_detail_mid);
-  //            break;
-  //          case 3:
-  //            arrPositionDetail = getResources().getStringArray(R.array.position_detail_def);
-  //            break;
-  //        }
-  //        for (String anArrPositionDetail : arrPositionDetail) {
-  //          PositionR positionDetail = new PositionR();
-  //          positionDetail.setName(anArrPositionDetail);
-  //          positionDetailList.add(positionDetail);
-  //        }
-  //        adapterPositionDetail.notifyDataSetChanged();
-  //      } else {
-  //        positionDetailList.clear();
-  //        adapterPositionDetail.notifyDataSetChanged();
-  //      }
-  //      break;
-  //    case R.id.spinner_position_detail:
-  //      break;
-  //    case R.id.spinner_ability:
-  //      if (position == 0) {
-  //        abilityValueList.clear();
-  //      } else {
-  //        for (int i = 100; i >= 40; i--) {
-  //          AbilityValue abilityValue = new AbilityValue();
-  //          if (i == 100) {
-  //            abilityValue.setName("All");
-  //          } else {
-  //            abilityValue.setId(i + "");
-  //            abilityValue.setName(">=" + i);
-  //          }
-  //          abilityValueList.add(abilityValue);
-  //        }
-  //      }
-  //      adapterAbilityValue.notifyDataSetChanged();
-  //      break;
-  //    case R.id.spinner_ability_value:
-  //
-  //      break;
-  //    case R.id.spinner_skill_moves:
-  //      break;
-  //  }
-  //}
-  //
-  //@Override public void onNothingSelected(AdapterView<?> parent) {
-  //
-  //}
-
-  @Override public void onClick(View v) {
-    //int id = v.getId();
-    //switch (id) {
-    //  case R.id.button_search:
-    //    break;
-    //  case R.id.button_reset:
-    //    break;
-    //}
-  }
-
-  //class LoadLiveBootPlayerTask extends AsyncTask<String, Void, List<Player>> {
-  //
-  //  private Elements elementsPlayer;
-  //
-  //  private Document doc;
-  //  private Player player;
-  //  private ArrayList<Position> positionList;
-  //
-  //  @Override protected void onPreExecute() {
-  //    super.onPreExecute();
-  //    if (playerList.size() > 0) {
-  //      playerList.clear();
-  //      playerListAdapter.notifyDataSetChanged();
-  //    }
-  //    if (progressLoadingView.getVisibility() == View.GONE) {
-  //      progressLoadingView.setVisibility(View.VISIBLE);
-  //    }
-  //    //if (linearLayoutSearch.getVisibility() == View.VISIBLE) {
-  //    //  linearLayoutSearch.setVisibility(View.GONE);
-  //    //}
-  //  }
-  //
-  //  @Override protected List<Player> doInBackground(String... params) {
-  //    String url = params[0];
-  //    //realm = Realm.getDefaultInstance();
-  //    try {
-  //      doc = Jsoup.connect(url).get();
-  //    } catch (IOException e) {
-  //      e.printStackTrace();
-  //    }
-  //    elementsPlayer = doc.select("tr.player-row");
-  //
-  //    for (final Element element : elementsPlayer) {
-  //
-  //      player = new Player();
-  //      player.id = element.attr("id").split("player_id")[1];
-  //      player.name = element.getElementsByClass("label_xs").text();
-  //      player.rosterUpdate = element.getElementsByClass("rosterupdate_statchange statup").text();
-  //      player.liveBoost = element.getElementsByClass("rosterupdate_statchange  liveboost").text();
-  //      player.skillmoves = element.getElementsByClass("player_info_list player_skillmoves")
-  //          .select("i.fa-star")
-  //          .size();
-  //      player.imageId = element.getElementsByClass("player_img img-rounded")
-  //          .attr("src")
-  //          .split("small/p")[1].split(".jpg")[0];
-  //      //realm.executeTransaction(realm1 -> realm1.copyToRealmOrUpdate(player));
-  //      if (element.getElementsByClass("player_position_list").text() != null) {
-  //        //realm.executeTransaction(realm12 -> {
-  //        //  PlayerR playerResult =
-  //        //      realm12.where(PlayerR.class).equalTo("id", player.getId()).findFirst();
-  //        player.positions = new ArrayList<>();
-  //        for (final Element elementPosition : element.getElementsByClass("player_position_list")) {
-  //          Position position = new Position();
-  //          position.setName(elementPosition.getElementsByClass("badge_position").text());
-  //          int valuePosition =
-  //              Integer.parseInt(elementPosition.getElementsByClass("stat_value").text()) + 5;
-  //          position.setValue(valuePosition + "");
-  //          player.positions.add(position);
-  //        }
-  //        player.season = com.huynn109.fifaonline3addict.util.Season.getSeasonFromClass(
-  //            element.getElementsByClass("player_info_list player_name")
-  //                .first()
-  //                .getElementsByClass("badged")
-  //                .first()
-  //                .attr("class")
-  //                .split("badged")[1].trim());
-  //        //realm12.copyToRealmOrUpdate(playerResult);
-  //        //});
-  //      }
-  //      playerList.add(player);
-  //    }
-  //    return playerList;
-  //  }
-  //
-  //  @Override protected void onPostExecute(List<Player> playerList) {
-  //    super.onPostExecute(playerList);
-  //    DatabaseHelper databaseHelper = new DatabaseHelper(realm);
-  //    databaseHelper.saveListPlayerToRealm(playerList);
-  //    if (progressLoadingView.getVisibility() == View.VISIBLE) {
-  //      progressLoadingView.setVisibility(View.GONE);
-  //    }
-  //    playerRealmQuery = realm.where(PlayerR.class);
-  //    if (seasonChecked.size() > 0) {
-  //      for (Season season : seasonChecked) {
-  //        if (seasonChecked.size() > 1) {
-  //          playerRealmQuery.equalTo("season", season.getId()).or();
-  //        } else {
-  //          playerRealmQuery.equalTo("season", season.getId());
-  //        }
-  //      }
-  //    }
-  //    playerRealmResults = playerRealmQuery.findAll();
-  //    playerListAdapter =
-  //        new PlayerListRealmAdapter(getContext(), playerRealmResults, itemClickListener);
-  //    recyclerPlayerFragment.setAdapter(playerListAdapter);
-  //  }
-  //}
-
-  //@OnClick(R.id.button_search) void onClickButtonSearch(View view) {
-  //  actionSearch();
-  //}
-
-  private void actionSearch() {
-    //StringBuilder stringBuilderSearchUrl = new StringBuilder(URL.SEARCH_URL);
-    //if (!TextUtils.isEmpty(editTextSearchPlayer.getText().toString().trim())) {
-    //  stringBuilderSearchUrl.append("&name=")
-    //      .append(editTextSearchPlayer.getText().toString().trim());
-    //}
-    //if (spinnerSeason.getSelectedItemPosition() != 0) {
-    //  stringBuilderSearchUrl.append("&season=")
-    //      .append(seasonList.get(spinnerSeason.getSelectedItemPosition()).getId());
-    //}
-    //new LoadLiveBootPlayerTask().execute(stringBuilderSearchUrl.toString());
-  }
-
-  //@OnClick(R.id.button_reset) void onClickButtonReset() {
-  //
-  //}
 }

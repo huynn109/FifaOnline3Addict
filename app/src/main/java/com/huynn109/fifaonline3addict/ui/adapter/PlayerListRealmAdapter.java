@@ -2,8 +2,11 @@ package com.huynn109.fifaonline3addict.ui.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,17 +20,18 @@ import com.huynn109.fifaonline3addict.data.model.realm.PlayerR;
 import com.huynn109.fifaonline3addict.data.model.realm.PositionR;
 import com.huynn109.fifaonline3addict.util.Season;
 import com.huynn109.fifaonline3addict.util.URL;
-import io.realm.RealmBasedRecyclerViewAdapter;
-import io.realm.RealmResults;
-import io.realm.RealmViewHolder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by huyuit on 2/12/2017.
  */
 
 public class PlayerListRealmAdapter
-    extends RealmBasedRecyclerViewAdapter<PlayerR, PlayerListRealmAdapter.ViewHolder> {
+    extends RecyclerView.Adapter<PlayerListRealmAdapter.ViewHolder> {
   public static final String TAG = PlayerListRealmAdapter.class.getSimpleName();
+
+
 
   public interface OnItemClickListener {
 
@@ -36,21 +40,31 @@ public class PlayerListRealmAdapter
 
   private OnItemClickListener listener;
   private final Context mContext;
+  private List<PlayerR> playerRs = new ArrayList<>();
 
-  public PlayerListRealmAdapter(Context context, RealmResults<PlayerR> realmResults,
+  public PlayerListRealmAdapter(Context context, List<PlayerR> realmResults,
       PlayerListRealmAdapter.OnItemClickListener listener) {
-    super(context, realmResults, true, true);
     this.mContext = context;
     this.listener = listener;
+    Log.d(TAG, "PlayerListRealmAdapter: " + realmResults.size());
+    Log.d(TAG, "PlayerListRealmAdapter: " + realmResults.get(0).name);
+    this.playerRs = realmResults;
+    Log.d(TAG, "PlayerListRealmAdapter: " + playerRs.get(0).name);
   }
 
-  @Override public ViewHolder onCreateRealmViewHolder(ViewGroup viewGroup, int i) {
-    View rowPlayerView = inflater.inflate(R.layout.row_player, viewGroup, false);
+  @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View rowPlayerView = LayoutInflater.from(mContext).inflate(R.layout.row_player, parent, false);
     return new ViewHolder(rowPlayerView);
   }
 
-  @Override public void onBindRealmViewHolder(ViewHolder holder, int position) {
-    final PlayerR player = realmResults.get(position);
+
+  @Override public int getItemCount() {
+    Log.d(TAG, "getItemCount: " + playerRs.size());
+    return playerRs.size();
+  }
+
+  @Override public void onBindViewHolder(ViewHolder holder, int position) {
+    final PlayerR player = playerRs.get(position);
     ((ViewHolder) holder).linearPosition1.setVisibility(View.GONE);
     ((ViewHolder) holder).linearPosition2.setVisibility(View.GONE);
     ((ViewHolder) holder).linearPosition3.setVisibility(View.GONE);
@@ -297,7 +311,7 @@ public class PlayerListRealmAdapter
     }
   }
 
-  public class ViewHolder extends RealmViewHolder {
+  public class ViewHolder extends RecyclerView.ViewHolder {
     public @BindView(R.id.text_view_title) TextView textPlayerName;
     public @BindView(R.id.text_view_value) TextView textPositionActive;
     public @BindView(R.id.image_avatar_player) ImageView imageAvatarPlayer;
@@ -338,11 +352,7 @@ public class PlayerListRealmAdapter
     }
 
     public void bind(final PlayerR item, final PlayerListRealmAdapter.OnItemClickListener listener) {
-      itemView.setOnClickListener(new View.OnClickListener() {
-        @Override public void onClick(View v) {
-          listener.onItemClick(item);
-        }
-      });
+      itemView.setOnClickListener(v -> listener.onItemClick(item));
     }
   }
 }

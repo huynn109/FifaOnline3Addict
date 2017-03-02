@@ -263,12 +263,11 @@
           <!--android:layout_below="@+id/linear_search_form"-->
           <!--android:scrollbars="vertical"-->
           <!--/>-->
-      <co.moonmonkeylabs.realmrecyclerview.RealmRecyclerView
+      <android.support.v7.widget.RecyclerView
           android:id="@+id/recycler_player_fragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_below="@+id/linear_search_form"
-          app:rrvLayoutType="LinearLayout"
           />
     </RelativeLayout>
 </RelativeLayout>
