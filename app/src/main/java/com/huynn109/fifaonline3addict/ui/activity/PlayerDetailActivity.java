@@ -19,7 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -36,21 +37,6 @@ import com.huynn109.fifaonline3addict.util.AdmobUtil;
 import com.huynn109.fifaonline3addict.util.Season;
 import com.huynn109.fifaonline3addict.util.URL;
 import com.kekstudio.dachshundtablayout.DachshundTabLayout;
-import com.trello.rxlifecycle2.RxLifecycle;
-import com.trello.rxlifecycle2.android.ActivityEvent;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-
-import org.greenrobot.eventbus.EventBus;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -58,8 +44,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.realm.Realm;
+import java.util.ArrayList;
+import java.util.List;
+import org.greenrobot.eventbus.EventBus;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
-public class PlayerDetailActivity extends RxAppCompatActivity {
+public class PlayerDetailActivity extends BaseActivity {
 
   private static final String TAG = PlayerDetailActivity.class.getSimpleName();
   @BindView(R.id.image_avatar_player) CircleImageView imageAvatarPlayer;
@@ -121,10 +114,17 @@ public class PlayerDetailActivity extends RxAppCompatActivity {
   private List<Integer> listSpeciality = new ArrayList<>();
   private List<Integer> listTrait = new ArrayList<>();
 
+  @Override protected int getDefaultLayout() {
+    return R.layout.activity_player_detail;
+  }
+
+  @Override protected int getMdCoreLayout() {
+    return R.layout.activity_player_detail;
+  }
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     realm = Realm.getDefaultInstance();
-    setContentView(R.layout.activity_player_detail);
     ButterKnife.bind(this);
     getExtraFromList();
     handleSeason();
@@ -271,7 +271,6 @@ public class PlayerDetailActivity extends RxAppCompatActivity {
   private void getJsoupPlayerStat(String url) {
     getJsoupPlayerStatDocument(url).subscribeOn(Schedulers.io())
         .observeOn(Schedulers.computation())
-        .compose(RxLifecycle.bindUntilEvent(lifecycle(), ActivityEvent.DESTROY))
         .doOnNext(this::parsePlayerStat)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(subscribePlayerStat());
@@ -411,8 +410,7 @@ public class PlayerDetailActivity extends RxAppCompatActivity {
   }
 
   public void getJsoupPlayerDetail(String url) {
-    getJsoupPlayerDetailDocument(url).compose(
-        RxLifecycle.bindUntilEvent(lifecycle(), ActivityEvent.DESTROY))
+    getJsoupPlayerDetailDocument(url)
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.computation())
         .doOnNext(this::parsePlayerInfo)
@@ -529,7 +527,7 @@ public class PlayerDetailActivity extends RxAppCompatActivity {
           isShow = true;
         } else if (isShow) {
           collapsingLayout.setTitle(
-              " ");//carefull there should a space between double quote otherwise it wont work
+              " ");
           isShow = false;
         }
       }

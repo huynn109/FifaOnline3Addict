@@ -20,21 +20,19 @@
         />
     <TextView
         android:id="@+id/text_count_trait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/text_title_trait"
         android:paddingLeft="5dp"
         android:paddingStart="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
         android:text="@string/text_count"
+        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
         />
     <View
         android:id="@+id/view_divider_trait"
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp"
         android:layout_below="@+id/text_title_trait"
         android:layout_marginTop="2dp"
-        android:background="@android:drawable/divider_horizontal_bright"
+        style="@style/MdDivider"
         />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_trait"
@@ -42,7 +40,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/view_divider_trait"
         android:layout_marginTop="8dp"
-        app:rrvEmptyLayoutId="@layout/empty_view"
         />
     <TextView
         android:id="@+id/text_title_speciality"
@@ -56,31 +53,28 @@
         />
     <TextView
         android:id="@+id/text_count_speciality"
-        android:layout_below="@+id/recycler_trait"
-        android:layout_toRightOf="@+id/text_title_speciality"
-        android:layout_toEndOf="@+id/text_title_speciality"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:paddingLeft="5dp"
-        android:paddingStart="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+        android:layout_below="@+id/recycler_trait"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_toEndOf="@+id/text_title_speciality"
+        android:layout_toRightOf="@+id/text_title_speciality"
+        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:text="@string/text_count"
+        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
         />
     <View
         android:id="@+id/view_divider_speciality"
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp"
         android:layout_below="@+id/text_title_speciality"
         android:layout_marginTop="2dp"
-        android:background="@android:drawable/divider_horizontal_bright"
+        style="@style/MdDivider"
         />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_speciality"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/view_divider_speciality"
-        app:rrvEmptyLayoutId="@layout/empty_view"
         android:layout_marginTop="8dp"
         />
   </RelativeLayout>

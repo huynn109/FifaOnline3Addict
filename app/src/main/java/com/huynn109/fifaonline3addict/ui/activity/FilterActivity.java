@@ -2,7 +2,6 @@ package com.huynn109.fifaonline3addict.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -34,7 +33,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterActivity extends AppCompatActivity
+public class FilterActivity extends BaseActivity
     implements AdapterView.OnItemSelectedListener {
 
   public static final int REQUEST_CODE_SEASON = 1;
@@ -82,9 +81,16 @@ public class FilterActivity extends AppCompatActivity
   private boolean checkBoxLimitedChecked;
   private Club clubChecked = new Club();
 
+  @Override protected int getDefaultLayout() {
+    return R.layout.activity_filter;
+  }
+
+  @Override protected int getMdCoreLayout() {
+    return R.layout.activity_filter;
+  }
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_filter);
     ButterKnife.bind(this);
     setupToolbar();
     setUpSpinner();

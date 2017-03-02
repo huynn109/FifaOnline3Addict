@@ -21,10 +21,10 @@
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:layout_gravity="start"
-      android:fitsSystemWindows="true"
+      android:clipToPadding="false"
       app:headerLayout="@layout/nav_header_main"
-      app:itemIconTint="@android:color/secondary_text_light"
-      app:itemTextColor="@android:color/secondary_text_light"
+      app:itemIconTint="?attr/mdTextColorPrimary_backgroundPalette"
+      app:itemTextColor="?attr/mdTextColorPrimary_backgroundPalette"
       app:menu="@menu/activity_main_drawer"
       />
 

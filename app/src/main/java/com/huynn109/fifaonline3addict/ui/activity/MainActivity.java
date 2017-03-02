@@ -1,6 +1,7 @@
 package com.huynn109.fifaonline3addict.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.IntDef;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -8,24 +9,27 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.huynn109.fifaonline3addict.R;
+import com.huynn109.fifaonline3addict.config.Constants;
 import com.huynn109.fifaonline3addict.ui.fragment.CompareFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.FavoriteFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.PlayerListFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.TaxFragment;
 import com.huynn109.fifaonline3addict.util.AdmobUtil;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import me.henrytao.mdcore.core.MdCompat;
 
-public class MainActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity {
 
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.drawer_layout) DrawerLayout drawer;
@@ -35,27 +39,84 @@ public class MainActivity extends AppCompatActivity
   @BindView(R.id.ad_main) AdView adMain;
   @BindView(R.id.search_view) MaterialSearchView searchView;
   @BindView(R.id.toolbar_container) FrameLayout toolbarContainer;
+  private ActionBarDrawerToggle mActionBarDrawerToggle;
+
+  @Override protected int getDefaultLayout() {
+    return 0;
+  }
+
+  @Override protected int getMdCoreLayout() {
+    return R.layout.activity_main;
+  }
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
 
-    ActionBarDrawerToggle toggle =
+    mActionBarDrawerToggle =
         new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
             R.string.navigation_drawer_close);
-    drawer.setDrawerListener(toggle);
-    toggle.syncState();
+    drawer.addDrawerListener(mActionBarDrawerToggle);
+    mActionBarDrawerToggle.syncState();
 
-    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-    navigationView.setNavigationItemSelectedListener(this);
-    onNavigationItemSelected(navigationView.getMenu().getItem(0));
+    navView.setNavigationItemSelectedListener(
+        item -> onNavigationItemSelected(GravityCompat.START, item));
+    ImageView leftLogo = (ImageView) navView.getHeaderView(0).findViewById(R.id.imageView);
+    MdCompat.supportDrawableTint(this, leftLogo.getDrawable(), MdCompat.Palette.BACKGROUND);
 
+    if (savedInstanceState == null) {
+      MenuItem item =  navView.getMenu().getItem(0);
+      onNavigationItemSelected(GravityCompat.START,item);
+    }
     AdRequest adRequest = AdmobUtil.getAdMobRequest(this);
     if (adRequest != null) {
       adMain.loadAd(adRequest);
     }
+  }
+
+  private boolean onNavigationItemSelected(@Gravity int type, MenuItem item) {
+    drawer.closeDrawers();
+    drawer.postDelayed(() -> onNavigationItemSelected(type, item.getItemId()),
+        Constants.Timer.SHORT);
+    item.setChecked(true);
+    setTitle(item.getTitle());
+    return true;
+  }
+
+  private void onNavigationItemSelected(@Gravity int type, int menuItemId) {
+    Fragment fragment = null;
+    Class fragmentClass = null;
+
+    switch (menuItemId) {
+      case R.id.nav_home:
+        fragmentClass = PlayerListFragment.class;
+        break;
+      case R.id.nav_tax:
+        fragmentClass = TaxFragment.class;
+        break;
+      case R.id.nav_compare:
+        fragmentClass = CompareFragment.class;
+        break;
+      case R.id.nav_favorite:
+        fragmentClass = FavoriteFragment.class;
+        break;
+      case R.id.nav_share:
+        showThemePicker();
+        return;
+    }
+    try {
+      fragment = (Fragment) (fragmentClass != null ? fragmentClass.newInstance() : null);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    fragmentManager.beginTransaction().replace(R.id.frame_main, fragment).commit();
+  }
+
+  @IntDef({ GravityCompat.START, GravityCompat.END }) @Retention(RetentionPolicy.SOURCE)
+  private @interface Gravity {
+
   }
 
   @Override public void onBackPressed() {
@@ -69,38 +130,5 @@ public class MainActivity extends AppCompatActivity
     } else {
       super.onBackPressed();
     }
-  }
-
-  @SuppressWarnings("StatementWithEmptyBody") @Override
-  public boolean onNavigationItemSelected(MenuItem item) {
-    int id = item.getItemId();
-    Fragment fragment = null;
-    Class fragmentClass = null;
-    if (id == R.id.nav_home) {
-      fragmentClass = PlayerListFragment.class;
-    } else if (id == R.id.nav_tax) {
-      fragmentClass = TaxFragment.class;
-    } else if (id == R.id.nav_compare) {
-      fragmentClass = CompareFragment.class;
-    } else if (id == R.id.nav_favorite) {
-      fragmentClass = FavoriteFragment.class;
-    } else if (id == R.id.nav_share) {
-      return false;
-    }
-    try {
-      fragment = (Fragment) (fragmentClass != null ? fragmentClass.newInstance() : null);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    fragmentManager.beginTransaction().replace(R.id.frame_main, fragment).commit();
-
-    item.setChecked(true);
-
-    setTitle(item.getTitle());
-
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-    drawer.closeDrawer(GravityCompat.START);
-    return true;
   }
 }

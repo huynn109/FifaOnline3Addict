@@ -14,7 +14,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:fitsSystemWindows="true"
-      android:theme="@style/AppTheme.AppBarOverlay"
       >
 
     <android.support.design.widget.CollapsingToolbarLayout
@@ -29,7 +28,7 @@
           android:id="@+id/relative_info"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="?actionBarSize"
+          android:layout_marginTop="65dp"
           android:padding="5dp"
           >
         <de.hdodenhof.circleimageview.CircleImageView
@@ -37,7 +36,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_centerVertical="true"
-            app:civ_border_color="#22000000"
+            app:civ_border_color="?attr/mdTextColorHint_backgroundPalette"
             app:civ_border_width="1dp"
             />
         <RelativeLayout
@@ -243,7 +242,6 @@
                 android:paddingLeft="2dp"
                 android:text="85"
                 android:textAllCaps="true"
-                android:textColor="@android:color/black"
                 android:textSize="10sp"
                 />
           </LinearLayout>
@@ -272,7 +270,6 @@
                 android:paddingLeft="2dp"
                 android:text="85"
                 android:textAllCaps="true"
-                android:textColor="@android:color/black"
                 android:textSize="10sp"
                 />
           </LinearLayout>
@@ -301,7 +298,6 @@
                 android:paddingLeft="2dp"
                 android:text="85"
                 android:textAllCaps="true"
-                android:textColor="@android:color/black"
                 android:textSize="10sp"
                 />
           </LinearLayout>
@@ -329,7 +325,6 @@
                 android:paddingLeft="2dp"
                 android:text="85"
                 android:textAllCaps="true"
-                android:textColor="@android:color/black"
                 android:textSize="10sp"
                 />
           </LinearLayout>
@@ -424,10 +419,8 @@
 
       <android.support.v7.widget.Toolbar
           android:id="@+id/toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
           app:layout_collapseMode="pin"
-          app:popupTheme="@style/AppTheme.PopupOverlay"
+          style="@style/MdToolbar"
           />
 
     </android.support.design.widget.CollapsingToolbarLayout>
@@ -437,7 +430,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         app:ddAnimatedIndicator="dachshund"
-        app:ddIndicatorColor="@color/colorAccent"
+        app:ddIndicatorColor="?attr/colorAccent"
         app:ddIndicatorHeight="6dp"
         app:tabMode="fixed"
         />
@@ -447,7 +440,8 @@
       android:id="@+id/view_pager_stat"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      />
 
 
   <com.google.android.gms.ads.AdView

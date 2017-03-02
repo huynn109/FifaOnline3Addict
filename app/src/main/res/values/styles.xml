@@ -1,19 +1,88 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-  <style name="AppTheme.NoActionBar">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-    <item name="colorButtonNormal">@color/color_yellow_season</item>
+  <style name="AppStyle.GridItem" parent="">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">1</item>
   </style>
-  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar"/>
-  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+  <!--&lt;!&ndash;&lt;!&ndash; Base application theme. &ndash;&gt;&ndash;&gt;-->
+  <!--<style name="AppTheme" parent="AppTheme.White">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="colorPrimary">@color/colorPrimary</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="colorPrimaryDark">@color/colorPrimaryDark</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="colorAccent">@color/colorAccent</item>&ndash;&gt;-->
+  <!--</style>-->
 
+  <!--&lt;!&ndash;<style name="AppTheme.NoActionBar">&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="windowActionBar">false</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="windowNoTitle">true</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="colorButtonNormal">@color/color_yellow_season</item>&ndash;&gt;-->
+  <!--&lt;!&ndash;</style>&ndash;&gt;-->
+
+  <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar"/>-->
+
+  <!--<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>-->
+
+  <style name="Divider">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">0.4dp</item>
+    <item name="android:layout_alignParentBottom">true</item>
+    <item name="android:background">#999999</item>
+  </style>
+
+  <!--<style name="Base.AppTheme.Light" parent="MdTheme.Light">-->
+    <!--<item name="bottomSheetDialogTheme">@style/Theme.Design.Light.BottomSheetDialog</item>-->
+
+    <!--&lt;!&ndash;<item name="mdTypography_default">fonts/roboto/Roboto-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_thin">fonts/roboto/Roboto-Thin.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_light">fonts/roboto/Roboto-Light.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_regular">fonts/roboto/Roboto-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_medium">fonts/roboto/Roboto-Medium.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_bold">fonts/roboto/Roboto-Bold.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_black">fonts/roboto/Roboto-Black.ttf</item>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<item name="mdTypography_default">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_thin">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_light">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_regular">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_medium">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_bold">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="mdTypography_black">fonts/custom/Cookie-Regular.ttf</item>&ndash;&gt;-->
+  <!--</style>-->
+
+  <!--<style name="AppTheme.White" parent="Base.AppTheme.Light">-->
+    <!--<item name="mdColor_primaryPalette">@color/mdColor_white</item>-->
+    <!--<item name="mdColor_primaryPalette_dark">@color/mdColor_white_dark</item>-->
+    <!--<item name="mdColor_primaryPalette_light">@color/mdColor_white_light</item>-->
+
+    <!--&lt;!&ndash; textColor for primary palette &ndash;&gt;-->
+    <!--<item name="mdTextColorPrimary_primaryPalette">@color/mdTextColorPrimary_light</item>-->
+    <!--<item name="mdTextColorPrimary_primaryPalette_dark">@color/mdTextColorPrimary_light</item>-->
+    <!--<item name="mdTextColorPrimary_primaryPalette_light">@color/mdTextColorPrimary_light</item>-->
+    <!--<item name="mdTextColorSecondary_primaryPalette">@color/mdTextColorSecondary_light</item>-->
+    <!--<item name="mdTextColorSecondary_primaryPalette_dark">@color/mdTextColorSecondary_light</item>-->
+    <!--<item name="mdTextColorSecondary_primaryPalette_light">@color/mdTextColorSecondary_light</item>-->
+    <!--<item name="mdTextColorHint_primaryPalette">@color/mdTextColorHint_light</item>-->
+    <!--<item name="mdTextColorHint_primaryPalette_dark">@color/mdTextColorHint_light</item>-->
+    <!--<item name="mdTextColorHint_primaryPalette_light">@color/mdTextColorHint_light</item>-->
+    <!--<item name="mdColorDivider_primaryPalette">@color/mdColorDivider_light</item>-->
+    <!--<item name="mdColorDivider_primaryPalette_dark">@color/mdColorDivider_light</item>-->
+    <!--<item name="mdColorDivider_primaryPalette_light">@color/mdColorDivider_light</item>-->
+
+    <!--<item name="mdTextColorPrimaryInverse_primaryPalette">@color/mdTextColorPrimary_dark</item>-->
+    <!--<item name="mdTextColorPrimaryInverse_primaryPalette_dark">@color/mdTextColorPrimary_dark</item>-->
+    <!--<item name="mdTextColorPrimaryInverse_primaryPalette_light">@color/mdTextColorPrimary_dark</item>-->
+    <!--<item name="mdTextColorSecondaryInverse_primaryPalette">@color/mdTextColorSecondary_dark</item>-->
+    <!--<item name="mdTextColorSecondaryInverse_primaryPalette_dark">@color/mdTextColorSecondary_dark</item>-->
+    <!--<item name="mdTextColorSecondaryInverse_primaryPalette_light">@color/mdTextColorSecondary_dark</item>-->
+    <!--<item name="mdTextColorHintInverse_primaryPalette">@color/mdTextColorHint_dark</item>-->
+    <!--<item name="mdTextColorHintInverse_primaryPalette_dark">@color/mdTextColorHint_dark</item>-->
+    <!--<item name="mdTextColorHintInverse_primaryPalette_light">@color/mdTextColorHint_dark</item>-->
+    <!--<item name="mdColorDividerInverse_primaryPalette">@color/mdColorDivider_dark</item>-->
+    <!--<item name="mdColorDividerInverse_primaryPalette_dark">@color/mdColorDivider_dark</item>-->
+    <!--<item name="mdColorDividerInverse_primaryPalette_light">@color/mdColorDivider_dark</item>-->
+  <!--</style>-->
+
+  <!--<style name="AppStyle.MdToolbar" parent="MdToolbar">-->
+  <!--</style>-->
 
 </resources>

@@ -3,7 +3,6 @@ package com.huynn109.fifaonline3addict.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FilterSeasonActivity extends AppCompatActivity {
+public class FilterSeasonActivity extends BaseActivity {
 
   private static final String TAG = FilterSeasonActivity.class.getSimpleName();
   @BindView(R.id.toolbar) Toolbar toolbar;
@@ -35,9 +34,16 @@ public class FilterSeasonActivity extends AppCompatActivity {
   private HashMap<Integer, Boolean> isChecked = new HashMap<>();
   private ArrayList<Season> seasonChecked = new ArrayList<>();
 
+  @Override protected int getDefaultLayout() {
+    return R.layout.activity_filter_season;
+  }
+
+  @Override protected int getMdCoreLayout() {
+    return R.layout.activity_filter_season;
+  }
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_filter_season);
     ButterKnife.bind(this);
     parseData();
     setupToolbar();

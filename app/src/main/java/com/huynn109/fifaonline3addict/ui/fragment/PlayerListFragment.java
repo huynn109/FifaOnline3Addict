@@ -127,7 +127,6 @@ public class PlayerListFragment extends Fragment {
 
   public void getJsoupPlayerList(String url) {
     showProgressBar(true);
-    Log.d(TAG, "getJsoupPlayerList: " + url);
     getJsoupDocument(url).subscribeOn(Schedulers.io())
         .observeOn(Schedulers.computation())
         .doOnNext(this::parseDocToList)

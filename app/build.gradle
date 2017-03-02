@@ -47,7 +47,6 @@ dependencies {
   compile 'com.google.code.gson:gson:2.8.0'
   compile 'org.apache.commons:commons-lang3:3.5'
   compile 'de.hdodenhof:circleimageview:2.1.0'
-  compile 'com.github.thorbenprimke:realm-recyclerview:0.9.25'
   compile 'com.github.Andy671:Dachshund-Tab-Layout:v0.2.0'
   compile 'org.greenrobot:eventbus:3.0.0'
   compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -57,6 +56,10 @@ dependencies {
   compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
   compile 'com.google.firebase:firebase-ads:10.2.0'
   compile 'com.miguelcatalan:materialsearchview:1.4.0'
+  compile "me.henrytao:recyclerview:3.3.0"
+  compile "me.henrytao:mdcore:3.3.9"
+  compile "me.henrytao:smooth-app-bar-layout:3.0.0"
+  compile 'com.android.support:percent:25.2.0'
   testCompile 'junit:junit:4.12'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

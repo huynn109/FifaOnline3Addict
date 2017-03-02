@@ -5,7 +5,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +28,7 @@ import java.util.List;
 
 public class PlayerListRealmAdapter
     extends RecyclerView.Adapter<PlayerListRealmAdapter.ViewHolder> {
-  public static final String TAG = PlayerListRealmAdapter.class.getSimpleName();
-
-
+  private static final String TAG = PlayerListRealmAdapter.class.getSimpleName();
 
   public interface OnItemClickListener {
 
@@ -46,10 +43,7 @@ public class PlayerListRealmAdapter
       PlayerListRealmAdapter.OnItemClickListener listener) {
     this.mContext = context;
     this.listener = listener;
-    Log.d(TAG, "PlayerListRealmAdapter: " + realmResults.size());
-    Log.d(TAG, "PlayerListRealmAdapter: " + realmResults.get(0).name);
     this.playerRs = realmResults;
-    Log.d(TAG, "PlayerListRealmAdapter: " + playerRs.get(0).name);
   }
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -57,9 +51,7 @@ public class PlayerListRealmAdapter
     return new ViewHolder(rowPlayerView);
   }
 
-
   @Override public int getItemCount() {
-    Log.d(TAG, "getItemCount: " + playerRs.size());
     return playerRs.size();
   }
 
@@ -104,9 +96,9 @@ public class PlayerListRealmAdapter
       } else if (player.season.equals(Season.getSeasonFromClass(Season.season14))) {
         ((ViewHolder) holder).textViewSeason.setVisibility(View.VISIBLE);
         ((ViewHolder) holder).textViewSeason.setText("14");
-      } else if (player.season.equals(Season.getSeasonFromClass(Season.season06Wc))
-          || player.season.equals(Season.getSeasonFromClass(Season.season14Wc))
-          || player.season.equals(Season.getSeasonFromClass(Season.season10Wc))) {
+      } else if (player.season.equals(Season.getSeasonFromClass(Season.season06Wc)) || player.season
+          .equals(Season.getSeasonFromClass(Season.season14Wc)) || player.season.equals(
+          Season.getSeasonFromClass(Season.season10Wc))) {
         ((ViewHolder) holder).textViewSeason.setVisibility(View.VISIBLE);
         if (player.season.equals(Season.getSeasonFromClass(Season.season06Wc))) {
           ((ViewHolder) holder).textViewSeason.setText("06");
@@ -132,8 +124,7 @@ public class PlayerListRealmAdapter
         ((ViewHolder) holder).textViewSeason.setBackgroundColor(
             ContextCompat.getColor(mContext, R.color.color_green_ec));
       } else if (player.season.equals(Season.getSeasonFromClass(Season.season06))
-          || player.season
-          .equals(Season.getSeasonFromClass(Season.season07))
+          || player.season.equals(Season.getSeasonFromClass(Season.season07))
           || player.season.equals(Season.getSeasonFromClass(Season.season08))
           || player.season.equals(Season.getSeasonFromClass(Season.season09))
           || player.season.equals(Season.getSeasonFromClass(Season.season10))
@@ -154,8 +145,8 @@ public class PlayerListRealmAdapter
             ContextCompat.getColor(mContext, R.color.yellow_14t));
         ((ViewHolder) holder).textViewSeason.setBackgroundColor(
             ContextCompat.getColor(mContext, R.color.blu_14t));
-      } else if (player.season.equals(Season.getSeasonFromClass(Season.season06U)) || player.season
-          .equals(Season.getSeasonFromClass(Season.season10U))) {
+      } else if (player.season.equals(Season.getSeasonFromClass(Season.season06U))
+          || player.season.equals(Season.getSeasonFromClass(Season.season10U))) {
         ((ViewHolder) holder).textViewSeason.setVisibility(View.VISIBLE);
         if (player.season.equals(Season.getSeasonFromClass(Season.season06U))) {
           ((ViewHolder) holder).textViewSeason.setText("06");
@@ -176,8 +167,8 @@ public class PlayerListRealmAdapter
             ContextCompat.getColor(mContext, R.color.yellow_16w));
       } else if (player.season.equals(Season.getSeasonFromClass(Season.seasonWl))) {
         ((ViewHolder) holder).imageViewSeasonWl.setVisibility(View.VISIBLE);
-      } else if (player.season.equals(Season.getSeasonFromClass(Season.seasonMuLegend)) || player.season
-          .equals(Season.getSeasonFromClass(Season.seasonTc92))) {
+      } else if (player.season.equals(Season.getSeasonFromClass(Season.seasonMuLegend))
+          || player.season.equals(Season.getSeasonFromClass(Season.seasonTc92))) {
         ((ViewHolder) holder).imageViewSeason.setVisibility(View.VISIBLE);
         ((ViewHolder) holder).imageViewSeason.setImageDrawable(
             mContext.getResources().getDrawable(R.drawable.mu_logo));
@@ -351,7 +342,8 @@ public class PlayerListRealmAdapter
       ButterKnife.bind(this, itemView);
     }
 
-    public void bind(final PlayerR item, final PlayerListRealmAdapter.OnItemClickListener listener) {
+    public void bind(final PlayerR item,
+        final PlayerListRealmAdapter.OnItemClickListener listener) {
       itemView.setOnClickListener(v -> listener.onItemClick(item));
     }
   }

@@ -13,15 +13,11 @@
       android:id="@+id/appbar_main"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:theme="@style/AppTheme.AppBarOverlay"
       >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
+       style="@style/MdToolbar"
         />
   </android.support.design.widget.AppBarLayout>
 
@@ -72,7 +68,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:id="@+id/linear_league"
@@ -100,7 +96,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,7 +123,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,7 +149,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -195,7 +191,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -237,7 +233,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -262,7 +258,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@android:drawable/divider_horizontal_bright"
+            style="@style/MdDivider"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -291,16 +287,13 @@
       </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
     <TextView
+        style="@style/MdButton.Colored"
         android:id="@+id/button_apply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/red_button"
         android:gravity="center"
-        android:minHeight="47dp"
         android:text="@string/text_apply"
-        android:textColor="@android:color/primary_text_dark"
-        app:textAllCaps="true"
         />
   </RelativeLayout>
 

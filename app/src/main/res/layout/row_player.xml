@@ -128,7 +128,6 @@
           android:paddingLeft="2dp"
           android:text="85"
           android:textAllCaps="true"
-          android:textColor="@android:color/black"
           android:textSize="10sp"
           />
     </LinearLayout>
@@ -156,7 +155,6 @@
           android:paddingLeft="2dp"
           android:text="85"
           android:textAllCaps="true"
-          android:textColor="@android:color/black"
           android:textSize="10sp"
           />
     </LinearLayout>
@@ -184,7 +182,6 @@
           android:paddingLeft="2dp"
           android:text="85"
           android:textAllCaps="true"
-          android:textColor="@android:color/black"
           android:textSize="10sp"
           />
     </LinearLayout>
@@ -198,9 +195,9 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:background="@drawable/position_gk"
+          android:textColor="@android:color/white"
           android:text="GK"
           android:textAllCaps="true"
-          android:textColor="@android:color/white"
           android:textSize="10sp"
           />
       <TextView
@@ -210,7 +207,6 @@
           android:paddingLeft="2dp"
           android:text="85"
           android:textAllCaps="true"
-          android:textColor="@android:color/black"
           android:textSize="10sp"
           />
     </LinearLayout>
