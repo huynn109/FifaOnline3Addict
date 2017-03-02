@@ -22,6 +22,7 @@ import com.huynn109.fifaonline3addict.ui.fragment.FavoriteFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.PlayerListFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.TaxFragment;
 import com.huynn109.fifaonline3addict.util.AdmobUtil;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity
   @BindView(R.id.frame_main) FrameLayout frameMain;
   @BindView(R.id.nav_view) NavigationView navView;
   @BindView(R.id.ad_main) AdView adMain;
+  @BindView(R.id.search_view) MaterialSearchView searchView;
+  @BindView(R.id.toolbar_container) FrameLayout toolbarContainer;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -56,8 +59,13 @@ public class MainActivity extends AppCompatActivity
   }
 
   @Override public void onBackPressed() {
-    if (drawer.isDrawerOpen(GravityCompat.START)) {
-      drawer.closeDrawer(GravityCompat.START);
+    if (drawer.isDrawerOpen(GravityCompat.START) || searchView.isSearchOpen()) {
+      if (drawer.isDrawerOpen(GravityCompat.START)) {
+        drawer.closeDrawer(GravityCompat.START);
+      }
+      if (searchView.isSearchOpen()) {
+        searchView.closeSearch();
+      }
     } else {
       super.onBackPressed();
     }
