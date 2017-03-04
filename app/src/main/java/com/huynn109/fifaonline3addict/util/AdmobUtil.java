@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 public class AdmobUtil {
   public static AdRequest getAdMobRequest(Context context) {
     AdRequest.Builder adRequestBuilder =
-        new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
+        new AdRequest.Builder();
 
     if (!BuildConfig.BUILD_TYPE.equals("release")) {
       // Register as a test device

@@ -37,6 +37,8 @@ import com.huynn109.fifaonline3addict.util.AdmobUtil;
 import com.huynn109.fifaonline3addict.util.Season;
 import com.huynn109.fifaonline3addict.util.URL;
 import com.kekstudio.dachshundtablayout.DachshundTabLayout;
+import com.trello.rxlifecycle2.RxLifecycle;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -161,7 +163,7 @@ public class PlayerDetailActivity extends BaseActivity {
     viewPagerAdapter.addFragment(PaperHiddenStatFragment.newInstance(),
         getResources().getString(R.string.title_paper_hidden_stat_fragment));
     viewPagerAdapter.addFragment(PaperReviewFragment.newInstance(),
-        getResources().getString(R.string.title_paper_review_fragment));
+        getResources().getString(R.string.price));
     viewPagerStat.setAdapter(viewPagerAdapter);
     tabStat.setupWithViewPager(viewPagerStat);
   }
@@ -260,7 +262,7 @@ public class PlayerDetailActivity extends BaseActivity {
   private void excuteTask() {
     getJsoupPlayerDetail(URL.FIFA_ADDICT_PLAYER_URL + playerRealm.id);
     idStat = playerRealm.id;
-    if (playerRealm.season.equals(Season.getSeasonFromClass(Season.season16))) {
+    if (playerRealm.season != null && playerRealm.season.equals(Season.getSeasonFromClass(Season.season16))) {
       idStat = playerRealm.imageId;
       if (idStat.length() == 5) idStat = "0" + idStat;
       idStat = "12" + idStat;
@@ -270,6 +272,7 @@ public class PlayerDetailActivity extends BaseActivity {
 
   private void getJsoupPlayerStat(String url) {
     getJsoupPlayerStatDocument(url).subscribeOn(Schedulers.io())
+        .compose(RxLifecycle.bindUntilEvent(lifecycle(), ActivityEvent.DESTROY))
         .observeOn(Schedulers.computation())
         .doOnNext(this::parsePlayerStat)
         .observeOn(AndroidSchedulers.mainThread())
@@ -410,8 +413,8 @@ public class PlayerDetailActivity extends BaseActivity {
   }
 
   public void getJsoupPlayerDetail(String url) {
-    getJsoupPlayerDetailDocument(url)
-        .subscribeOn(Schedulers.io())
+    getJsoupPlayerDetailDocument(url).subscribeOn(Schedulers.io())
+        .compose(RxLifecycle.bindUntilEvent(lifecycle(), ActivityEvent.DESTROY))
         .observeOn(Schedulers.computation())
         .doOnNext(this::parsePlayerInfo)
         .observeOn(AndroidSchedulers.mainThread())
@@ -441,7 +444,7 @@ public class PlayerDetailActivity extends BaseActivity {
             .load("https://vn.fifaaddict.com/" + player.clubLogo)
             .into(imageLogoClub);
         textBirthDay.setText(player.birthDay);
-        textBody.setText(player.height + "cm - " + player.weight + "kg");
+        textBody.setText(player.height + getString(R.string.text_cm) +" - " + player.weight + getString(R.string.text_kg));
         textFootLeft.setText(String.valueOf(player.leftFoot));
         textFootRight.setText(String.valueOf(player.rightFoot));
         handleFootBackgroundColor();
@@ -526,8 +529,7 @@ public class PlayerDetailActivity extends BaseActivity {
           collapsingLayout.setTitle(playerRealm.name);
           isShow = true;
         } else if (isShow) {
-          collapsingLayout.setTitle(
-              " ");
+          collapsingLayout.setTitle(" ");
           isShow = false;
         }
       }

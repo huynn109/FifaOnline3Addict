@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">FO3 Addict</string>
+  <string name="app_name">FO3 데이터 플레이어</string>
 
   <string name="strength">몸싸움</string>
   <string name="acceleration">가속력</string>
@@ -136,4 +136,19 @@
   <string name="skill_moves">개인기</string>
   <string name="title_speciality">칭호</string>
   <string name="title_trait">특성</string>
+  <string name="hint_empty_search">검색된 결과가 없습니다</string>
+  <string name="price">가격</string>
+  <string name="compare">비교</string>
+  <string name="home">홈페이지</string>
+  <string name="favorite">특히 잘하는</string>
+  <string name="tax">이적 시장 수수료 계산기</string>
+  <string name="text_season">시즌</string>
+  <string name="text_skill">개인기</string>
+  <string name="text_attribute">능력치</string>
+  <string name="text_league">리그</string>
+  <string name="text_club">팀</string>
+  <string name="text_nation">국적</string>
+  <string name="text_position">위치</string>
+  <string name="title_all">모든</string>
+  <string name="theme">테마</string>
 </resources>

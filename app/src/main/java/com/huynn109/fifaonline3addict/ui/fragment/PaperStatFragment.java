@@ -173,7 +173,7 @@ public class PaperStatFragment extends Fragment {
   @Subscribe(sticky = true, threadMode = ThreadMode.MAIN) public void onEvent(
       PlayerDetailActivity.MessageEvent event) {
     PlayerR player = realm.where(PlayerR.class).equalTo("id", event.getIdPlayer()).findFirst();
-    if (idPlayer != null) {
+    if (idPlayer != null && player.playerStat.sprintspeed > 0) {
       setShowMainView(true);
       setTextAndColorStat(textNameSprintspeed, textValueSprintspeed, player.playerStat.sprintspeed);
       setTextAndColorStat(textNameAcceleration, textValueAcceleration, player.playerStat.acceleration);
@@ -208,6 +208,9 @@ public class PaperStatFragment extends Fragment {
       setTextAndColorStat(textNameStandingtackle, textValueStandingtackle, player.playerStat.standingtackle);
       setTextAndColorStat(textNameVolleys, textValueVolleys, player.playerStat.volleys);
       setTextAndColorStat(textNameFinishing, textValueFinishing, player.playerStat.finishing);
+    }else{
+      linearStat.setVisibility(View.GONE);
+      progressBar.setVisibility(View.GONE);
     }
   }
 

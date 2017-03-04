@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">FO3 Addict</string>
+  <string name="app_name">FO3 Dữ Liệu Cầu Thủ</string>
 
   <string name="strength">Sức mạnh</string>
   <string name="acceleration">Tăng tốc</string>
@@ -136,4 +136,19 @@
   <string name="skill_moves">Kỹ năng</string>
   <string name="title_speciality">Phong cách chơi</string>
   <string name="title_trait">Chỉ số ẩn</string>
+  <string name="hint_empty_search">Không có dữ liệu phù hợp</string>
+  <string name="price">Giá</string>
+  <string name="compare">Danh sách so sánh</string>
+  <string name="home">Trang chủ</string>
+  <string name="favorite">Danh sách yêu thích</string>
+  <string name="tax">Tính thuế</string>
+  <string name="text_season">Mùa giải</string>
+  <string name="text_skill">Kĩ thuật</string>
+  <string name="text_position">Vị trí</string>
+  <string name="text_attribute">Chỉ số</string>
+  <string name="text_club">Câu lạc bộ</string>
+  <string name="text_league">Giải đấu</string>
+  <string name="text_nation">Quốc gia</string>
+  <string name="title_all">Tất Cả</string>
+  <string name="theme">Chủ đề</string>
 </resources>

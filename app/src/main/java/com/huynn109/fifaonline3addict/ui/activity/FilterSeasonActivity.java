@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,7 +26,7 @@ public class FilterSeasonActivity extends BaseActivity {
 
   private static final String TAG = FilterSeasonActivity.class.getSimpleName();
   @BindView(R.id.toolbar) Toolbar toolbar;
-  @BindView(R.id.button_finish_season) TextView buttonFinishSeason;
+  @BindView(R.id.button_finish_season) ImageView buttonFinishSeason;
   @BindView(R.id.recycler_season) RecyclerView recyclerViewSeason;
   private List<Season> seasonList = new ArrayList<>();
   private List<Season> resultSeasonList = new ArrayList<>();

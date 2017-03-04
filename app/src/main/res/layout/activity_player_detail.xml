@@ -28,7 +28,7 @@
           android:id="@+id/relative_info"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="65dp"
+          android:layout_marginTop="70dp"
           android:padding="5dp"
           >
         <de.hdodenhof.circleimageview.CircleImageView
@@ -65,7 +65,6 @@
                 android:layout_marginRight="2dp"
                 android:background="@android:color/black"
                 android:gravity="center"
-                android:text="16"
                 android:textColor="@android:color/primary_text_dark"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -103,7 +102,6 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
-                android:text="Ronaldo"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 />
@@ -125,7 +123,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/background_roster_update"
-                android:text="+12"
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:visibility="gone"
@@ -145,7 +142,6 @@
                 android:layout_marginRight="2dp"
                 android:background="@color/foot_upon"
                 android:gravity="center"
-                android:text="1"
                 android:textColor="@android:color/primary_text_dark"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -157,7 +153,6 @@
                 android:layout_marginRight="2dp"
                 android:background="@color/foot_not_upon"
                 android:gravity="center"
-                android:text="5"
                 android:textColor="@android:color/primary_text_dark"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -228,11 +223,8 @@
                 android:id="@+id/text_view_position_1_name"
                 android:layout_width="28dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/position_st"
                 android:gravity="center"
-                android:text="ST"
                 android:textAllCaps="true"
-                android:textColor="@android:color/white"
                 android:textSize="8sp"
                 />
             <TextView
@@ -240,7 +232,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="2dp"
-                android:text="85"
                 android:textAllCaps="true"
                 android:textSize="10sp"
                 />
@@ -255,9 +246,7 @@
                 android:id="@+id/text_view_position_2_name"
                 android:layout_width="28dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/position_cm"
                 android:gravity="center"
-                android:text="CAM"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="8sp"
@@ -268,7 +257,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="2dp"
-                android:text="85"
                 android:textAllCaps="true"
                 android:textSize="10sp"
                 />
@@ -283,9 +271,7 @@
                 android:id="@+id/text_view_position_3_name"
                 android:layout_width="28dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/position_cb"
                 android:gravity="center"
-                android:text="CB"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="8sp"
@@ -296,7 +282,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="2dp"
-                android:text="85"
                 android:textAllCaps="true"
                 android:textSize="10sp"
                 />
@@ -311,9 +296,7 @@
                 android:id="@+id/text_view_position_4_name"
                 android:layout_width="28dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/position_gk"
                 android:gravity="center"
-                android:text="GK"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="8sp"
@@ -323,7 +306,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="2dp"
-                android:text="85"
                 android:textAllCaps="true"
                 android:textSize="10sp"
                 />
@@ -369,7 +351,6 @@
                 android:id="@+id/text_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bồ đào nha"
                 />
             <ImageView
                 android:id="@+id/image_country_flag"
@@ -389,7 +370,6 @@
                 android:id="@+id/text_club"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Barca"
                 />
             <ImageView
                 android:id="@+id/image_logo_club"
@@ -404,14 +384,12 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="right|center_vertical"
-              android:text="20-10-1991 (26)"
               />
           <TextView
               android:id="@+id/text_body"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="right|center_vertical"
-              android:text="181 cm - 76 kg"
               />
 
         </LinearLayout>
@@ -450,7 +428,7 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       app:adSize="BANNER"
-      app:adUnitId="@string/banner_ad_unit_id_debug"
+      app:adUnitId="@string/banner_ad_player_detail_unit_id"
       app:layout_behavior="com.huynn109.fifaonline3addict.data.helper.FixedBottomViewBehavior"
       >
   </com.google.android.gms.ads.AdView>

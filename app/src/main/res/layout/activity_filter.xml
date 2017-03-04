@@ -53,7 +53,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Mùa giải"
+              android:text="@string/text_season"
               />
           <TextView
               android:id="@+id/text_season"
@@ -83,7 +83,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Giải đấu"
+              android:text="@string/text_league"
               />
           <Spinner
               android:id="@+id/spinner_league"
@@ -111,7 +111,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Câu lạc bộ"
+              android:text="@string/text_club"
               />
           <Spinner
               android:id="@+id/spinner_club"
@@ -137,7 +137,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Quốc gia"
+              android:text="@string/text_nation"
               />
           <Spinner
               android:id="@+id/spinner_country"
@@ -164,7 +164,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Vị trí"
+              android:text="@string/text_position"
               />
           <LinearLayout
               android:layout_width="0dp"
@@ -195,7 +195,6 @@
             />
         <LinearLayout
             android:layout_width="match_parent"
-
             android:layout_height="50dp"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
@@ -206,7 +205,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Chỉ số"
+              android:text="@string/text_attribute"
               />
           <LinearLayout
               android:layout_width="0dp"
@@ -246,7 +245,7 @@
               android:layout_width="70dp"
               android:layout_height="wrap_content"
               android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="Kĩ thuật"
+              android:text="@string/text_skill"
               />
           <Spinner
               android:id="@+id/spinner_skill_moves"
@@ -286,12 +285,13 @@
         </LinearLayout>
       </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-    <TextView
+    <ImageView
         style="@style/MdButton.Colored"
         android:id="@+id/button_apply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_check_24dp"
         android:gravity="center"
         android:text="@string/text_apply"
         />

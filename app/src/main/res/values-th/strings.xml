@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">FO3 Addict</string>
+  <string name="app_name">FO3 เครื่องเล่นข้อมูล</string>
 
   <string name="strength">แข็งแกร่ง</string>
   <string name="acceleration">สปีดต้น</string>
@@ -136,4 +136,19 @@
   <string name="skill_moves">ใช้ทักษะ</string>
   <string name="title_speciality">สไตล์</string>
   <string name="title_trait">นิสัย</string>
+  <string name="hint_empty_search">ไม่มีข้อมูลที่กำลังค้นหา</string>
+  <string name="price">ราคา</string>
+  <string name="compare">เปรียบเทียบ</string>
+  <string name="home">หน้าแรก</string>
+  <string name="favorite">ที่ชื่นชอบ</string>
+  <string name="tax">คำนวณภาษีราคานักเตะ</string>
+  <string name="text_season">ฤดูกาล</string>
+  <string name="text_skill">ใช้ทักษะ</string>
+  <string name="text_attribute">คุณสมบัติ</string>
+  <string name="text_league">ลีก</string>
+  <string name="text_club">สโมสร</string>
+  <string name="text_nation">สัญชาติ</string>
+  <string name="text_position">ตำแหน่ง</string>
+  <string name="title_all">ทั้งหมด</string>
+  <string name="theme">กระทู้</string>
 </resources>

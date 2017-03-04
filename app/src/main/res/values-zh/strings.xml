@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">FO3 Addict</string>
+  <string name="app_name">FO3 数据播放器</string>
 
   <string name="strength">强壮</string>
   <string name="acceleration">加速</string>
@@ -136,4 +136,19 @@
   <string name="skill_moves">花式动作</string>
   <string name="title_speciality">称号</string>
   <string name="title_trait">特性</string>
+  <string name="hint_empty_search">请输入正确的信息</string>
+  <string name="price">价格</string>
+  <string name="compare">比较</string>
+  <string name="home">主页</string>
+  <string name="favorite">喜爱</string>
+  <string name="tax">手续费计算器</string>
+  <string name="text_season">赛季</string>
+  <string name="text_skill">花式动作</string>
+  <string name="text_attribute">属性选择</string>
+  <string name="text_league">联赛</string>
+  <string name="text_club">球队</string>
+  <string name="text_nation">民族</string>
+  <string name="text_position">位置</string>
+  <string name="title_all">所有</string>
+  <string name="theme">主题</string>
 </resources>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class FilterActivity extends BaseActivity
   public static final int REQUEST_CODE_LEAGUE = 2;
   private static final String TAG = FilterActivity.class.getSimpleName();
   @BindView(R.id.toolbar) Toolbar toolbar;
-  @BindView(R.id.button_apply) TextView buttonApply;
+  @BindView(R.id.button_apply) ImageView buttonApply;
   @BindView(R.id.linear_season) LinearLayout linearLayoutSeason;
   @BindView(R.id.text_season) TextView textViewSeason;
   @BindView(R.id.spinner_league) Spinner spinnerLeague;
@@ -157,7 +158,8 @@ public class FilterActivity extends BaseActivity
       Type listType = new TypeToken<List<League>>() {
       }.getType();
       League league = new League();
-      league.setName("All");
+      Log.d(TAG, "loadJsonFromFile: " + getString(R.string.title_all));
+      league.setName(getString(R.string.title_all));
       leagueList.add(league);
       List<League> leagueListGson = gson.fromJson(bufferString, listType);
       leagueList.addAll(leagueListGson);
@@ -404,7 +406,7 @@ public class FilterActivity extends BaseActivity
         if (position > 0) {
           clubList.clear();
           Club club = new Club();
-          club.setName("All");
+          club.setName(getString(R.string.title_all));
           clubList.add(0, club);
           clubList.addAll(leagueList.get(position).getClubs());
           spinnerClub.setSelection(0);
@@ -459,7 +461,7 @@ public class FilterActivity extends BaseActivity
           for (int i = 100; i >= 40; i--) {
             AbilityValue abilityValue = new AbilityValue();
             if (i == 100) {
-              abilityValue.setName("All");
+              abilityValue.setName(getString(R.string.title_all));
             } else {
               abilityValue.setId(i + "");
               abilityValue.setName(">=" + i);

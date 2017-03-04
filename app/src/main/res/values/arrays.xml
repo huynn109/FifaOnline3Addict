@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="season_id">
+  <string-array name="season_id" translatable="false">
     <item>kl2002</item>
     <item>2006</item>
     <item>2007</item>
@@ -39,7 +39,7 @@
     <item>2006,2007,2008,2009,2010,2011,2014,2015,2016,16ec,tots2014,eu2008,ucl2006,ucl2010,wc2006,wc2010,wc2014,15csl,xi,wl,vl</item>
   </string-array>
 
-  <string-array name="season_name">
+  <string-array name="season_name" translatable="false">
     <item>Korea Legend 2002</item>
     <item>06</item>
     <item>07</item>
@@ -78,7 +78,7 @@
     <item>Vietnam Server</item>
   </string-array>
 
-  <string-array name="country_id">
+  <string-array name="country_id" translatable="false">
     <item></item>
     <item>albania</item>
     <item>algeria</item>
@@ -250,8 +250,8 @@
     <item>zimbabwe</item>
   </string-array>
 
-  <string-array name="country_name">
-    <item>All</item>
+  <string-array name="country_name" translatable="false">
+    <item>@string/title_all</item>
     <item>Albania</item>
     <item>Algeria</item>
     <item>Angola</item>
@@ -422,16 +422,16 @@
     <item>Zimbabwe</item>
   </string-array>
 
-  <string-array name="position_generality">
-    <item>All</item>
+  <string-array name="position_generality" translatable="false">
+    <item>@string/title_all</item>
     <item>FWD</item>
     <item>MID</item>
     <item>DEF</item>
     <item>GK</item>
   </string-array>
 
-  <string-array name="position_detail_fwd">
-    <item>All</item>
+  <string-array name="position_detail_fwd" translatable="false">
+    <item>@string/title_all</item>
     <item>ST</item>
     <item>CF</item>
     <item>RF</item>
@@ -440,8 +440,8 @@
     <item>LW</item>
   </string-array>
 
-  <string-array name="position_detail_mid">
-    <item>All</item>
+  <string-array name="position_detail_mid" translatable="false">
+    <item>@string/title_all</item>
     <item>CAM</item>
     <item>LM</item>
     <item>RM</item>
@@ -449,8 +449,8 @@
     <item>CDM</item>
   </string-array>
 
-  <string-array name="position_detail_def">
-    <item>All</item>
+  <string-array name="position_detail_def" translatable="false">
+    <item>@string/title_all</item>
     <item>SW</item>
     <item>CB</item>
     <item>RB</item>
@@ -459,7 +459,7 @@
     <item>LWB</item>
   </string-array>
 
-  <string-array name="ability_id">
+  <string-array name="ability_id" translatable="false">
     <item></item>
     <item>overallrating</item>
     <item>finishing</item>
@@ -497,8 +497,8 @@
     <item>gkpositioning</item>
   </string-array>
 
-  <string-array name="ability_name">
-    <item>All</item>
+  <string-array name="ability_name" translatable="false">
+    <item>@string/title_all</item>
     <item>Chỉ số tổng quát</item>
     <item>Dứt điểm</item>
     <item>Lực sút</item>

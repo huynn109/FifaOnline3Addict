@@ -6,7 +6,7 @@
     >
 
   <TextView
-      android:text="Pick your favorite color"
+      android:text="@string/theme"
       style="@style/MdSubHeader.List"
       />
 

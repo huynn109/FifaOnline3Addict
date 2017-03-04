@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">FO3 Addict</string>
+  <string name="app_name">FO3 Data Pemain</string>
 
   <string name="strength">Strength</string>
   <string name="acceleration">Acceleration</string>
@@ -136,4 +136,19 @@
   <string name="skill_moves">Skillmoves</string>
   <string name="title_speciality">Specialities</string>
   <string name="title_trait">Traits</string>
+  <string name="hint_empty_search">Tidak ada pemain yang memenuhi kriteria</string>
+  <string name="price">Harga</string>
+  <string name="compare">membandingkan</string>
+  <string name="home">halaman rumah</string>
+  <string name="favorite">Favorit</string>
+  <string name="tax">Tax Calculator</string>
+  <string name="text_season">Musim</string>
+  <string name="text_skill">Skillmoves</string>
+  <string name="text_attribute">Attribute</string>
+  <string name="text_league">Liga</string>
+  <string name="text_club">Klub</string>
+  <string name="text_nation">Negara</string>
+  <string name="text_position">Posisi</string>
+  <string name="title_all">Semua</string>
+  <string name="theme">tema</string>
 </resources>
