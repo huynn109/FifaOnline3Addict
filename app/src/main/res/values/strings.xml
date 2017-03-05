@@ -3,9 +3,9 @@
 
   <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
   <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
-  <string name="banner_ad_main_unit_id" translatable="false">ca-app-pub-6801264948608701/4898634673</string>
-  <string name="banner_ad_player_detail_unit_id" translatable="false">ca-app-pub-6801264948608701/3031401071</string>
-  <!--<string name="banner_ad_unit_id_debug" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+  <!--<string name="banner_ad_main_unit_id" translatable="false">ca-app-pub-6801264948608701/4898634673</string>-->
+  <!--<string name="banner_ad_player_detail_unit_id" translatable="false">ca-app-pub-6801264948608701/3031401071</string>-->
+  <string name="banner_ad_unit_id_debug" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
 
   <string name="hint_search">Player\'s Name e.g. ronaldo,messi</string>
   <string name="skill_moves">Skillmoves</string>
@@ -183,4 +183,6 @@
   <string name="text_skill">Skillmoves</string>
   <string name="text_kg" translatable="false">kg</string>
   <string name="text_cm" translatable="false">cm</string>
+  <string name="text_spinner_enchant">Enchant:</string>
+  <string name="text_spinner_level">Level:</string>
 </resources>

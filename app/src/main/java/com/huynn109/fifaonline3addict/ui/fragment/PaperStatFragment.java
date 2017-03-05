@@ -6,9 +6,12 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,6 +19,8 @@ import com.huynn109.fifaonline3addict.R;
 import com.huynn109.fifaonline3addict.data.model.realm.PlayerR;
 import com.huynn109.fifaonline3addict.ui.activity.PlayerDetailActivity;
 import io.realm.Realm;
+import java.util.Arrays;
+import java.util.List;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -23,7 +28,7 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PaperStatFragment extends Fragment {
+public class PaperStatFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
   private static final String TAG = PaperStatFragment.class.getSimpleName();
   private static final String BUNDLE_STRING_ID_PLAYER = "BUNDLE_STRING_ID_PLAYER";
@@ -128,9 +133,14 @@ public class PaperStatFragment extends Fragment {
   @BindView(R.id.relative_gkpositioning) RelativeLayout relativeGkpositioning;
   @BindView(R.id.progress_bar) ProgressBar progressBar;
   @BindView(R.id.linear_stat) LinearLayout linearStat;
+  @BindView(R.id.spinner_enchant) Spinner spinnerEnchant;
+  @BindView(R.id.spinner_level) Spinner spinnerLevel;
+  @BindView(R.id.linear_spinner) LinearLayout linearSpinner;
   private View rootView;
   private String idPlayer;
   private Realm realm;
+  private List<String> enchantList;
+  private List<String> levelList;
 
   public static PaperStatFragment newInstance(String s) {
     Bundle args = new Bundle();
@@ -147,7 +157,21 @@ public class PaperStatFragment extends Fragment {
     idPlayer = this.getArguments().getString(BUNDLE_STRING_ID_PLAYER);
     realm = Realm.getDefaultInstance();
     setShowMainView(false);
+    setupSpinner();
     return rootView;
+  }
+
+  private void setupSpinner() {
+    enchantList = Arrays.asList(getResources().getStringArray(R.array.enchant));
+    spinnerEnchant.setAdapter(
+        new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+            enchantList));
+    spinnerEnchant.setOnItemSelectedListener(this);
+    spinnerEnchant.setSelection(1);
+    levelList = Arrays.asList(getResources().getStringArray(R.array.level));
+    spinnerLevel.setAdapter(
+        new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, levelList));
+    spinnerLevel.setOnItemSelectedListener(this);
   }
 
   private void setShowMainView(boolean b) {
@@ -170,48 +194,67 @@ public class PaperStatFragment extends Fragment {
     super.onStop();
   }
 
-  @Subscribe(sticky = true, threadMode = ThreadMode.MAIN) public void onEvent(
-      PlayerDetailActivity.MessageEvent event) {
+  @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+  public void onEvent(PlayerDetailActivity.MessageEvent event) {
     PlayerR player = realm.where(PlayerR.class).equalTo("id", event.getIdPlayer()).findFirst();
     if (idPlayer != null && player.playerStat.sprintspeed > 0) {
       setShowMainView(true);
-      setTextAndColorStat(textNameSprintspeed, textValueSprintspeed, player.playerStat.sprintspeed);
-      setTextAndColorStat(textNameAcceleration, textValueAcceleration, player.playerStat.acceleration);
-      setTextAndColorStat(textNameAgility, textValueAgility, player.playerStat.agility);
-      setTextAndColorStat(textNameAggression, textValueAggression, player.playerStat.aggression);
-      setTextAndColorStat(textNameBalance, textValueBalance, player.playerStat.balance);
-      setTextAndColorStat(textNameBallcontrol, textValueBallcontrol, player.playerStat.ballcontrol);
-      setTextAndColorStat(textNameCrossing, textValueCrossing, player.playerStat.crossing);
-      setTextAndColorStat(textNameCurve, textValueCurve, player.playerStat.curve);
-      setTextAndColorStat(textNameDribbling, textValueDribbling, player.playerStat.dribbling);
-      setTextAndColorStat(textNameFreekickaccuracy, textValueFreekickaccuracy, player.playerStat.freekickaccuracy);
-      setTextAndColorStat(textNameJumping, textValueJumping, player.playerStat.jumping);
-      setTextAndColorStat(textNameHeadingaccuracy, textValueHeadingaccuracy, player.playerStat.headingaccuracy);
-      setTextAndColorStat(textNameLongpassing, textValueLongpassing, player.playerStat.longpassing);
-      setTextAndColorStat(textNameMarking, textValueMarking, player.playerStat.marking);
-      setTextAndColorStat(textNameLongshots, textValueLongshots, player.playerStat.longshots);
-      setTextAndColorStat(textNamePenalties, textValuePenalties, player.playerStat.penalties);
-      setTextAndColorStat(textNamePositioning, textValuePositioning, player.playerStat.positioning);
-      setTextAndColorStat(textNameReactions, textValueReactions, player.playerStat.reactions);
-      setTextAndColorStat(textNameShortpassing, textValueShortpassing, player.playerStat.shortpassing);
-      setTextAndColorStat(textNameShotpower, textValueShotpower, player.playerStat.shotpower);
-      setTextAndColorStat(textNameVision, textValueVision, player.playerStat.vision);
-      setTextAndColorStat(textNameSlidingtackle, textValueSlidingtackle, player.playerStat.slidingtackle);
-      setTextAndColorStat(textNameStamina, textValueStamina, player.playerStat.stamina);
-      setTextAndColorStat(textNameStrength, textValueStrength, player.playerStat.strength);
-      setTextAndColorStat(textNameGkdiving, textValueGkdiving, player.playerStat.gkdiving);
-      setTextAndColorStat(textNameGkhandling, textValueGkhandling, player.playerStat.gkhandling);
-      setTextAndColorStat(textNameGkkicking, textValueGkkicking, player.playerStat.gkkicking);
-      setTextAndColorStat(textNameGkreflexes, textValueGkreflexes, player.playerStat.gkreflexes);
-      setTextAndColorStat(textNameGkpositioning, textValueGkpositioning, player.playerStat.gkpositioning);
-      setTextAndColorStat(textNameTacticalawareness, textValueTacticalawareness, player.playerStat.tacticalawareness);
-      setTextAndColorStat(textNameStandingtackle, textValueStandingtackle, player.playerStat.standingtackle);
-      setTextAndColorStat(textNameVolleys, textValueVolleys, player.playerStat.volleys);
-      setTextAndColorStat(textNameFinishing, textValueFinishing, player.playerStat.finishing);
-    }else{
+      updateStatView(player, 0);
+    } else {
       linearStat.setVisibility(View.GONE);
       progressBar.setVisibility(View.GONE);
     }
+  }
+
+  private void updateStatView(PlayerR player, int sum) {
+    setTextAndColorStat(textNameSprintspeed, textValueSprintspeed,
+        player.playerStat.sprintspeed + sum);
+    setTextAndColorStat(textNameAcceleration, textValueAcceleration,
+        player.playerStat.acceleration + sum);
+    setTextAndColorStat(textNameAgility, textValueAgility, player.playerStat.agility + sum);
+    setTextAndColorStat(textNameAggression, textValueAggression,
+        player.playerStat.aggression + sum);
+    setTextAndColorStat(textNameBalance, textValueBalance, player.playerStat.balance + sum);
+    setTextAndColorStat(textNameBallcontrol, textValueBallcontrol,
+        player.playerStat.ballcontrol + sum);
+    setTextAndColorStat(textNameCrossing, textValueCrossing, player.playerStat.crossing + sum);
+    setTextAndColorStat(textNameCurve, textValueCurve, player.playerStat.curve + sum);
+    setTextAndColorStat(textNameDribbling, textValueDribbling, player.playerStat.dribbling + sum);
+    setTextAndColorStat(textNameFreekickaccuracy, textValueFreekickaccuracy,
+        player.playerStat.freekickaccuracy + sum);
+    setTextAndColorStat(textNameJumping, textValueJumping, player.playerStat.jumping + sum);
+    setTextAndColorStat(textNameHeadingaccuracy, textValueHeadingaccuracy,
+        player.playerStat.headingaccuracy + sum);
+    setTextAndColorStat(textNameLongpassing, textValueLongpassing,
+        player.playerStat.longpassing + sum);
+    setTextAndColorStat(textNameMarking, textValueMarking, player.playerStat.marking + sum);
+    setTextAndColorStat(textNameLongshots, textValueLongshots, player.playerStat.longshots + sum);
+    setTextAndColorStat(textNamePenalties, textValuePenalties, player.playerStat.penalties + sum);
+    setTextAndColorStat(textNamePositioning, textValuePositioning,
+        player.playerStat.positioning + sum);
+    setTextAndColorStat(textNameReactions, textValueReactions, player.playerStat.reactions + sum);
+    setTextAndColorStat(textNameShortpassing, textValueShortpassing,
+        player.playerStat.shortpassing + sum);
+    setTextAndColorStat(textNameShotpower, textValueShotpower, player.playerStat.shotpower + sum);
+    setTextAndColorStat(textNameVision, textValueVision, player.playerStat.vision + sum);
+    setTextAndColorStat(textNameSlidingtackle, textValueSlidingtackle,
+        player.playerStat.slidingtackle + sum);
+    setTextAndColorStat(textNameStamina, textValueStamina, player.playerStat.stamina + sum);
+    setTextAndColorStat(textNameStrength, textValueStrength, player.playerStat.strength + sum);
+    setTextAndColorStat(textNameGkdiving, textValueGkdiving, player.playerStat.gkdiving + sum);
+    setTextAndColorStat(textNameGkhandling, textValueGkhandling,
+        player.playerStat.gkhandling + sum);
+    setTextAndColorStat(textNameGkkicking, textValueGkkicking, player.playerStat.gkkicking + sum);
+    setTextAndColorStat(textNameGkreflexes, textValueGkreflexes,
+        player.playerStat.gkreflexes + sum);
+    setTextAndColorStat(textNameGkpositioning, textValueGkpositioning,
+        player.playerStat.gkpositioning + sum);
+    setTextAndColorStat(textNameTacticalawareness, textValueTacticalawareness,
+        player.playerStat.tacticalawareness + sum);
+    setTextAndColorStat(textNameStandingtackle, textValueStandingtackle,
+        player.playerStat.standingtackle + sum);
+    setTextAndColorStat(textNameVolleys, textValueVolleys, player.playerStat.volleys + sum);
+    setTextAndColorStat(textNameFinishing, textValueFinishing, player.playerStat.finishing + sum);
   }
 
   private void setTextAndColorStat(TextView textName, TextView textValue, int value) {
@@ -228,7 +271,7 @@ public class PaperStatFragment extends Fragment {
     } else if (value >= 90) {
       textName.setTextColor(ContextCompat.getColor(getContext(), R.color.stat_90));
       textValue.setTextColor(ContextCompat.getColor(getContext(), R.color.stat_90));
-    }else if (value >= 80) {
+    } else if (value >= 80) {
       textName.setTextColor(ContextCompat.getColor(getContext(), R.color.stat_80));
       textValue.setTextColor(ContextCompat.getColor(getContext(), R.color.stat_80));
     } else if (value >= 70) {
@@ -243,5 +286,44 @@ public class PaperStatFragment extends Fragment {
   @Override public void onDestroyView() {
     super.onDestroyView();
     realm.close();
+  }
+
+  @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    PlayerR playerR = realm.where(PlayerR.class).equalTo("id", idPlayer).findFirst();
+    int enchant = 0;
+    if (playerR != null && playerR.playerStat != null) {
+      if (spinnerEnchant.getSelectedItemPosition() == 0) {
+        enchant = -5;
+      } else if (spinnerEnchant.getSelectedItemPosition() < 5) {
+        enchant = spinnerEnchant.getSelectedItemPosition() - 1;
+      } else {
+        switch (spinnerEnchant.getSelectedItemPosition()) {
+          case 5:
+            enchant = spinnerEnchant.getSelectedItemPosition();
+            break;
+          case 6:
+            enchant = spinnerEnchant.getSelectedItemPosition() + 1;
+            break;
+          case 7:
+            enchant = spinnerEnchant.getSelectedItemPosition() + 2;
+            break;
+          case 8:
+            enchant = spinnerEnchant.getSelectedItemPosition() + 4;
+            break;
+          case 9:
+            enchant = spinnerEnchant.getSelectedItemPosition() + 6;
+            break;
+          case 10:
+            enchant = spinnerEnchant.getSelectedItemPosition() + 9;
+            break;
+        }
+      }
+      int level = spinnerLevel.getSelectedItemPosition();
+      updateStatView(playerR, enchant + level);
+    }
+  }
+
+  @Override public void onNothingSelected(AdapterView<?> parent) {
+
   }
 }

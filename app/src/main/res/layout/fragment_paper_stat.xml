@@ -9,6 +9,7 @@
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:padding="@dimen/activity_horizontal_margin"
       >
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -17,11 +18,54 @@
         android:layout_centerInParent="true"
         />
     <LinearLayout
-        android:visibility="gone"
+        android:id="@+id/linear_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:gravity="center"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_spinner_enchant"
+            />
+        <Spinner
+            android:id="@+id/spinner_enchant"
+            android:layout_width="match_parent"
+            style="@style/Base.Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:gravity="center"
+          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_spinner_level"
+            />
+        <Spinner
+            android:id="@+id/spinner_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/linear_stat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/linear_spinner"
         android:weightSum="2"
         >
       <LinearLayout
