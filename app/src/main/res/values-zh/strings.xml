@@ -151,4 +151,11 @@
   <string name="text_position">位置</string>
   <string name="title_all">所有</string>
   <string name="theme">主题</string>
+  <string name="hint_price">价格</string>
+  <string name="hint_check_pc">PC (20%)</string>
+  <string name="hint_check_vip">VIP (30%)</string>
+  <string name="label_input_balance">要收到的资金</string>
+  <string name="label_input_tax">手续费</string>
+  <string name="text_spinner_enchant">Enchant:</string>
+  <string name="text_spinner_level">Level:</string>
 </resources>

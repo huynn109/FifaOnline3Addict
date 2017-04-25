@@ -22,8 +22,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.huynn109.fifaonline3addict.R;
 import com.huynn109.fifaonline3addict.data.helper.DatabaseHelper;
 import com.huynn109.fifaonline3addict.data.model.normal.Player;
@@ -33,7 +31,6 @@ import com.huynn109.fifaonline3addict.data.model.realm.PositionR;
 import com.huynn109.fifaonline3addict.ui.fragment.PaperHiddenStatFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.PaperReviewFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.PaperStatFragment;
-import com.huynn109.fifaonline3addict.util.AdmobUtil;
 import com.huynn109.fifaonline3addict.util.Season;
 import com.huynn109.fifaonline3addict.util.URL;
 import com.kekstudio.dachshundtablayout.DachshundTabLayout;
@@ -103,7 +100,6 @@ public class PlayerDetailActivity extends BaseActivity {
   @BindView(R.id.tab_stat) DachshundTabLayout tabStat;
   @BindView(R.id.app_bar) AppBarLayout appBar;
   @BindView(R.id.view_pager_stat) ViewPager viewPagerStat;
-  @BindView(R.id.ad_player_detail) AdView adPlayerDetail;
   private String idPlayer;
   private String idStat;
   private Realm realm;
@@ -134,14 +130,6 @@ public class PlayerDetailActivity extends BaseActivity {
     setupToolbar();
     excuteTask();
     setupFragment();
-    setupAds();
-  }
-
-  private void setupAds() {
-    AdRequest adRequest = AdmobUtil.getAdMobRequest(this);
-    if (adRequest != null) {
-      adPlayerDetail.loadAd(adRequest);
-    }
   }
 
   @Override protected void onResume() {
@@ -431,9 +419,10 @@ public class PlayerDetailActivity extends BaseActivity {
         DatabaseHelper databaseHelper = new DatabaseHelper(realm);
         databaseHelper.updatePlayerInfoToRealm(player);
 
-        textName.setText(playerRealm.name);
+        //textName.setText(playerRealm.name);
+        textName.setText("FO3 Data");
         Glide.with(PlayerDetailActivity.this)
-            .load("https:" + player.imageRealUrl)
+            .load(R.mipmap.ic_launcher_fo3_data)
             .into(imageAvatarPlayer);
         Glide.with(PlayerDetailActivity.this)
             .load("http://flagpedia.net/data/flags/mini/" + player.countryFlag + ".png")

@@ -421,16 +421,4 @@
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       />
 
-
-  <com.google.android.gms.ads.AdView
-      android:id="@+id/ad_player_detail"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      app:adSize="BANNER"
-      app:adUnitId="@string/banner_ad_unit_id_debug"
-      app:layout_behavior="com.huynn109.fifaonline3addict.data.helper.FixedBottomViewBehavior"
-      >
-  </com.google.android.gms.ads.AdView>
-
 </android.support.design.widget.CoordinatorLayout>

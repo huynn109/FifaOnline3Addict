@@ -15,15 +15,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.huynn109.fifaonline3addict.R;
 import com.huynn109.fifaonline3addict.config.Constants;
 import com.huynn109.fifaonline3addict.ui.fragment.CompareFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.FavoriteFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.PlayerListFragment;
 import com.huynn109.fifaonline3addict.ui.fragment.TaxFragment;
-import com.huynn109.fifaonline3addict.util.AdmobUtil;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -36,7 +33,6 @@ public class MainActivity extends BaseActivity {
   @BindView(R.id.appbar_main) AppBarLayout appBarLayout;
   @BindView(R.id.frame_main) FrameLayout frameMain;
   @BindView(R.id.nav_view) NavigationView navView;
-  @BindView(R.id.ad_main) AdView adMain;
   @BindView(R.id.search_view) MaterialSearchView searchView;
   @BindView(R.id.toolbar_container) FrameLayout toolbarContainer;
   private ActionBarDrawerToggle mActionBarDrawerToggle;
@@ -68,10 +64,6 @@ public class MainActivity extends BaseActivity {
     if (savedInstanceState == null) {
       MenuItem item =  navView.getMenu().getItem(0);
       onNavigationItemSelected(GravityCompat.START,item);
-    }
-    AdRequest adRequest = AdmobUtil.getAdMobRequest(this);
-    if (adRequest != null) {
-      adMain.loadAd(adRequest);
     }
   }
 

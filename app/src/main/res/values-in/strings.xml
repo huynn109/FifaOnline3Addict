@@ -151,4 +151,11 @@
   <string name="text_position">Posisi</string>
   <string name="title_all">Semua</string>
   <string name="theme">tema</string>
+  <string name="hint_price">Prices</string>
+  <string name="label_input_balance">Balance</string>
+  <string name="label_input_tax">Tax</string>
+  <string name="hint_check_vip">VIP (30%)</string>
+  <string name="hint_check_pc">PC (20%)</string>
+  <string name="text_spinner_enchant">Enchant:</string>
+  <string name="text_spinner_level">Level:</string>
 </resources>

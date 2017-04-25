@@ -151,4 +151,11 @@
   <string name="text_position">위치</string>
   <string name="title_all">모든</string>
   <string name="theme">테마</string>
+  <string name="hint_price">판매 금액</string>
+  <string name="label_input_tax">수수료</string>
+  <string name="hint_check_vip">VIP (30%)</string>
+  <string name="hint_check_pc">PC (20%)</string>
+  <string name="label_input_balance">받을 금액</string>
+  <string name="text_spinner_enchant">Enchant:</string>
+  <string name="text_spinner_level">Level:</string>
 </resources>
